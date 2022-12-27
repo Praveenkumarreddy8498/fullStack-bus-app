@@ -1,0 +1,310 @@
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Bus-application</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</p>
+<!-- <div>
+  <label for="serviceNo"></label>
+  <input type="checkbox" [checked]="cb.value"
+  (change)="onCheck(cb)">
+  
+</div>
+<div>
+  <table mat-table [ngStyle]="{ backgroundColor: 'lightgreen' }">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th *ngIf="isChecked">Service No</th>
+        <th>Plate No</th>
+        <th>Type</th>
+        <th>Service Type</th>
+        <th>Capacity</th>
+        <th>Boarding</th>
+        <th>Destination</th>
+        <th>Stops</th>
+        <th>Duration</th>
+        <th>Scheduled Departure</th>
+        <th>Schedule Arrival</th>
+        <th>Estimated Arrival</th>
+        <th>Fare</th>
+        <th>Tax</th>
+        <th>Total Fare</th>
+        <th>Flexible Ticket</th>
+        <th>Movie Enabled</th>
+        <th>Rating</th>
+        <th>Running Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bus of busList">
+        <td>{{ bus.busId }}</td>
+        <td *ngIf="isChecked">{{ bus.busServiceNum }}</td>
+        <td>{{ bus.busPlateNum }}</td>
+        <td>{{ bus.busType }}</td>
+        <td>{{ bus.busServiceType }}</td>
+        <td>{{ bus.busCapacity }}</td>
+        <td>{{ bus.startingPoint }}</td>
+        <td>{{ bus.destination }}</td>
+        <td>{{ bus.busStops }}</td>
+        <td>{{ bus.busDuration }} Hours</td>
+        <td>{{ bus.scheduleDepartureDateTime | date : "short" }}</td>
+        <td>{{ bus.scheduleArrivalDateTime | date : "short" }}</td>
+        <td>{{ bus.estimatedArrivalDateTime | date : "short" }}</td>
+        <td>{{ bus.fareAmount | currency : "INR" }}</td>
+        <td>{{ bus.fareTax | currency : "INR" }}</td>
+        <td>{{ bus.totalFare | currency : "INR" }}</td>
+        <td>{{ bus.flexiTicket }}</td>
+        <td>{{ bus.movieEnabled }}</td>
+        <td>{{ bus.rating }}</td>
+        <td>{{ bus.runningStatus }}</td>
+
+        <td><button (click)="show(product)">view more</button></td> -->
+<!-- <td><a  [routerLink]="['show']" routerLinkActive="router-link-active" >Show Info</a></td>
+        <td><a  [routerLink]="['desc']" routerLinkActive="router-link-active" >Description</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+<mat-slide-toggle [(ngModel)]="show">
+  <!-- <input type="checkbox" name="myData"  /> -->
+  serviceNo
+</mat-slide-toggle>
+<table mat-table [dataSource]="busList" class="mat-elevation-z8" >
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="busId">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.busId }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="busServiceNum">
+    <th mat-header-cell [hidden]="show" *matHeaderCellDef>serviceNo</th>
+    <td mat-cell [hidden]="show" *matCellDef="let element">{{ element.busServiceNum }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="busPlateNum">
+    <th mat-header-cell  *matHeaderCellDef>Plate no</th>
+    <td mat-cell  *matCellDef="let element">
+      {{ element.busPlateNum }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="busType">
+    <th mat-header-cell *matHeaderCellDef>busType</th>
+    <td mat-cell *matCellDef="let element">{{ element.busType }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="busServiceType">
+    <th mat-header-cell *matHeaderCellDef>busServiceType</th>
+    <td mat-cell *matCellDef="let element">{{ element.busServiceType }}</td>
+  </ng-container>
+  <ng-container matColumnDef="busCapacity">
+    <th mat-header-cell *matHeaderCellDef>busCapacity</th>
+    <td mat-cell *matCellDef="let element">{{ element.busCapacity }}</td>
+  </ng-container>
+  <ng-container matColumnDef="startingPoint">
+    <th mat-header-cell *matHeaderCellDef>startingPoint</th>
+    <td mat-cell *matCellDef="let element">{{ element.startingPoint }}</td>
+  </ng-container>
+  <ng-container matColumnDef="destination">
+    <th mat-header-cell *matHeaderCellDef>destination</th>
+    <td mat-cell *matCellDef="let element">{{ element.destination }}</td>
+  </ng-container>
+  <ng-container matColumnDef="busStops">
+    <th mat-header-cell *matHeaderCellDef>busStops</th>
+    <td mat-cell *matCellDef="let element">{{ element.busStops }}</td>
+  </ng-container>
+  <ng-container matColumnDef="busDuration">
+    <th mat-header-cell *matHeaderCellDef>busDuration</th>
+    <td mat-cell *matCellDef="let element">{{ element.busDuration }}</td>
+  </ng-container>
+  <ng-container matColumnDef="scheduleDepartureDateTime">
+    <th mat-header-cell *matHeaderCellDef>scheduleDepartureDateTime</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.scheduleDepartureDateTime|date:'short' }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="scheduleArrivalDateTime">
+    <th mat-header-cell *matHeaderCellDef>scheduleArrivalDateTime</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.scheduleArrivalDateTime|date:'short' }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="estimatedArrivalDateTime">
+    <th mat-header-cell *matHeaderCellDef>estimatedArrivalDateTime</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.estimatedArrivalDateTime|date:'short' }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="fareAmount">
+    <th mat-header-cell *matHeaderCellDef>fareAmount</th>
+    <td mat-cell *matCellDef="let element">{{ element.fareAmount }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fareTax">
+    <th mat-header-cell *matHeaderCellDef>fareTax</th>
+    <td mat-cell *matCellDef="let element">{{ element.fareTax }}</td>
+  </ng-container>
+  <ng-container matColumnDef="totalFare">
+    <th mat-header-cell *matHeaderCellDef>totalFare</th>
+    <td mat-cell *matCellDef="let element">{{ element.totalFare }}</td>
+  </ng-container>
+  <ng-container matColumnDef="flexiTicket">
+    <th mat-header-cell *matHeaderCellDef>flexiTicket</th>
+    <td mat-cell *matCellDef="let element">{{ element.flexiTicket }}</td>
+  </ng-container>
+  <ng-container matColumnDef="movieEnabled">
+    <th mat-header-cell *matHeaderCellDef>movieEnabled</th>
+    <td mat-cell *matCellDef="let element">{{ element.movieEnabled }}</td>
+  </ng-container>
+  <ng-container matColumnDef="rating">
+    <th mat-header-cell *matHeaderCellDef>rating</th>
+    <td mat-cell *matCellDef="let element">{{ element.rating }}</td>
+  </ng-container>
+  <ng-container matColumnDef="runningStatus">
+    <th mat-header-cell *matHeaderCellDef>runningStatus</th>
+    <td mat-cell *matCellDef="let element">{{ element.runningStatus }}</td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <!-- <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator> -->
+</table>
+
+
+
+<!-- 
+<div *ngFor="let item of displayedColumns" >
+    <input type="checkbox" >{{item}}
+  
+</div> -->
+
+<div>
+
+  <button *ngIf="user==='viewer'" (click)="isShown = !isShown" mat-raised-button color="accent">{{isShown === false? 'Add': 'Hide Add'}} Form</button>
+
+  <br/>
+<form #addBusForm="ngForm" class="example-form" *ngIf="isShown" (ngSubmit)="onAddBus(addBusForm)">
+  <div>
+
+      Bus ID<input matInput type="number" placeholder="busId" 
+      ngModel name="busId">
+  </div>
+  <div>
+      <input type="number" matInput placeholder="busServiceNum" 
+      ngModel name="busServiceNum">
+  </div>
+<div>
+      <input type="text" matInput placeholder="busPlateNum" 
+      ngModel name="busPlateNum">
+  </div>
+  <div>
+      <input type="text" matInput placeholder="busType" 
+      ngModel name="busType">
+  </div>
+
+  <div>
+      <input type="text" matInput placeholder="busServiceType" 
+      ngModel name="busServiceType">
+  </div>
+  <div>
+      <input type="text" matInput placeholder="startingPoint" 
+      ngModel name="startingPoint">
+  </div>
+  <div>
+      <input type="text" matInput placeholder="destination" 
+      ngModel name="destination">
+  </div>
+  <div>
+      <input type="number" matInput placeholder="busStops" 
+      ngModel name="busStops">
+  </div>
+  <div>
+      <input type="text" matInput placeholder="busDuration" 
+      ngModel name="busDuration">
+  </div>
+
+  <div>
+      <input type="datetime-local" matInput placeholder="scheduleDepartureDateTime" 
+      ngModel name="scheduleDepartureDateTime">
+  </div>
+  <div>
+      <input type="datetime-local" matInput placeholder="scheduleArrivalDateTime" 
+      ngModel name="scheduleArrivalDateTime">
+  </div>
+  <div>
+      <input type="datetime-local" matInput placeholder="estimatedArrivalDateTime" 
+      ngModel name="estimatedArrivalDateTime">
+  </div>
+  <div>
+      <input type="number" matInput placeholder="fareAmount" 
+      ngModel name="fareAmount">
+  </div>
+  <div>
+      <input type="number" matInput placeholder="fareTax" 
+      ngModel name="fareTax">
+  </div>
+  <div>
+      <input type="number" matInput placeholder="totalFare" 
+      ngModel name="totalFare">
+  </div>
+  <div>
+  <label for="flexiTicket">Flexible Ticket</label>
+  <br>
+<mat-radio-group ngModel name="flexiTicket">
+    <mat-radio-button class="example-radio-button" *ngFor="let choice of chooser" [value]="choice">
+      {{choice}}
+    </mat-radio-button>
+</mat-radio-group>
+     
+  </div>
+  <div>
+      
+    <div>
+      <label for="movieEnabled">Movie Enabled</label>
+      <br>
+    <mat-radio-group ngModel name="movieEnabled">
+        <mat-radio-button class="example-radio-button" *ngFor="let choice of chooser" [value]="choice">
+          {{choice}}
+        </mat-radio-button>
+    </mat-radio-group>
+         
+      </div>
+  </div>
+  <div>
+      <input type="number" matInput placeholder="rating" 
+      ngModel name="rating">
+  </div>
+  <div>
+    <label for="runningStatus">Running Status</label>
+    <br>
+  <mat-radio-group ngModel name="runningStatus">
+      <mat-radio-button class="example-radio-button" *ngFor="let choice of chooser" [value]="choice">
+        {{choice}}
+      </mat-radio-button>
+  </mat-radio-group>
+       
+    </div>
+  
+  <button type="submit" mat-raised-button color="primary">Add Bus</button>
+</form>
+</div>
+
