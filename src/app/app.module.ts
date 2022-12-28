@@ -9,10 +9,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { ViewTableComponent } from './components/view-table/view-table.component';
-import { DataAccessComponent } from './components/data-access/data-access.component';
+import { AddEditComponent } from './components/add-edit/add-edit.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ViewTableComponent, DataAccessComponent],
+  declarations: [AppComponent, DashboardComponent, ViewTableComponent, AddEditComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,11 +21,11 @@ import { DataAccessComponent } from './components/data-access/data-access.compon
     MaterialModule,
     AuthModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

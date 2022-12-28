@@ -1,13 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+    text-align: center;
+  }
 table {
   width: 100%;
 }
 .mat-row {
   height: auto;
 }
+.table-class{
+    overflow: scroll;
+}
 
 .mat-cell,.mat-header-cell {
   padding: 8px 8px 8px 20px;
 }
+.mat-row:hover{
+  background-color: rgb(250, 243, 200);
+}
+/* .user-icon{
+    padding-left: 50px;
+}
+.logout-icon{
+    padding-left: 50px;
+} */
 .example-radio-group {
     display: flex;
     flex-direction: column;

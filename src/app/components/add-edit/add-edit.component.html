@@ -1,0 +1,549 @@
+<!-- <button
+  *ngIf="user === 'manager' || user === 'editor'"
+  (click)="isShown = !isShown"
+  mat-raised-button
+  color="accent"
+>
+  {{ isShown === false ? "Add" : "Hide Add" }} Form
+</button> -->
+<form
+  [formGroup]="addBusForm"
+  class="example-form"
+  (ngSubmit)="onAddBus(addBusForm)"
+>
+  <table>
+    <tr>
+      <td>Bus Id</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+
+            type="number"
+            placeholder="busId"
+            formControlName="busId"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <!-- <mat-error *ngIf="busId.touched&&busId.invalid&&busId.pristine">
+        Required 
+</mat-error> -->
+
+    <tr>
+      <td>busServiceNum</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="busServiceNum"
+            formControlName="busServiceNum"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <!-- <mat-error *ngIf="busServiceNum.touched&&busServiceNum.invalid&&busServiceNum.pristine">
+        Required 
+</mat-error> -->
+
+    <tr>
+      <td>busPlateNum</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="busPlateNum"
+            formControlName="busPlateNum"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>busType</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Bus Type</mat-label>
+          <mat-select
+            placeholder="busType"
+            matInput
+            formControlName="busType"
+          >
+            <mat-option
+              *ngFor="let busType of busTypeSelect"
+              [value]="busType.value"
+            >
+              {{ busType.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Bus Type</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let busType of busTypeSelect " [value]="busType.value">
+              {{busType.value}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field> -->
+      </td>
+    </tr>
+
+    <tr>
+      <td>busServiceType</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Bus Service Type</mat-label>
+          <mat-select
+            placeholder="busServiceType"
+            formControlName="busServiceType"
+
+          >
+            <mat-option
+              *ngFor="let busType of busServiceTypeSelect"
+              matInput
+              [value]="busType.value"
+            >
+              {{ busType.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>busCapacity</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="busCapacity"
+            formControlName="busCapacity"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>startingPoint</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="startingPoint"
+            formControlName="startingPoint"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>destination</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            matInput
+            placeholder="destination"
+            formControlName="destination"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>busStops</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="busStops"
+            formControlName="busStops"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>busDuration</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="busDuration"
+            formControlName="busDuration"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>scheduleDepartureDateTime</td>
+      <td>
+        <mat-form-field>
+          <input
+            type="datetime-local"
+            matInput
+            placeholder="scheduleDepartureDateTime"
+            formControlName="scheduleDepartureDateTime"
+
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>scheduleArrivalDateTime</td>
+      <td>
+        <mat-form-field>
+          <input
+            type="datetime-local"
+            matInput
+            placeholder="scheduleArrivalDateTime"
+            formControlName="scheduleArrivalDateTime"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>estimatedArrivalDateTime</td>
+      <td>
+        <mat-form-field>
+          <input
+            type="datetime-local"
+            matInput
+            placeholder="estimatedArrivalDateTime"
+            formControlName="estimatedArrivalDateTime"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>fareAmount</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="fareAmount"
+            formControlName="fareAmount"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>fareTax</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="fareTax"
+            formControlName="fareTax"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>totalFare</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="totalFare"
+            formControlName="totalFare"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>flexiTicket</td>
+      <td>
+        <mat-radio-group formControlName="flexiTicket">
+          <mat-radio-button
+            matInput
+            class="example-radio-button"
+            *ngFor="let choice of chooser"
+            [value]="choice"
+          >
+            {{ choice }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </tr>
+    <tr>
+      <td>movieEnabled</td>
+      <td>
+        <mat-radio-group formControlName="movieEnabled">
+          <mat-radio-button
+            matInput
+            class="example-radio-button"
+            *ngFor="let choice of chooser"
+            [value]="choice"
+
+          >
+            {{ choice }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </tr>
+    <tr>
+      <td>rating</td>
+      <td>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            matInput
+            placeholder="rating"
+            formControlName="rating"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>runningStatus</td>
+      <td>
+        <mat-radio-group formControlName="runningStatus">
+          <mat-radio-button
+            matInput
+            class="example-radio-button"
+            *ngFor="let choice of chooser"
+            [value]="choice"
+          >
+            {{ choice }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </tr>
+    <br />
+    <tr>
+      <td>
+        <button id="add-bus" type="submit" mat-raised-button color="primary">
+          Add Bus
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- <button (click)="onclick()">
+clickme
+</button> -->
+
+<!-- <div>
+  <button
+    *ngIf="user === 'manager' || user === 'editor'"
+    (click)="isShown = !isShown"
+    mat-raised-button
+    color="accent"
+  >
+    {{ isShown === false ? "Add" : "Hide Add" }} Form
+  </button>
+
+  <br />
+  <form
+    #addBusForm="ngForm"
+    class="example-form"
+    *ngIf="isShown"
+    (ngSubmit)="onAddBus(addBusForm)"
+  >
+    <div>
+      Bus ID<input
+        matInput
+        type="number"
+        placeholder="busId"
+        ngModel
+        name="busId"
+      />
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <input
+          type="number"
+          matInput
+          placeholder="busServiceNum"
+          ngModel
+          name="busServiceNum"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="busPlateNum"
+        ngModel
+        name="busPlateNum"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="busType"
+        ngModel
+        name="busType"
+      />
+    </div>
+
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="busServiceType"
+        ngModel
+        name="busServiceType"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="startingPoint"
+        ngModel
+        name="startingPoint"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="destination"
+        ngModel
+        name="destination"
+      />
+    </div>
+    <div>
+      <input
+        type="number"
+        matInput
+        placeholder="busStops"
+        ngModel
+        name="busStops"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        matInput
+        placeholder="busDuration"
+        ngModel
+        name="busDuration"
+      />
+    </div>
+
+    <div>
+      <input
+        type="datetime-local"
+        matInput
+        placeholder="scheduleDepartureDateTime"
+        ngModel
+        name="scheduleDepartureDateTime"
+      />
+    </div>
+    <div>
+      <input
+        type="datetime-local"
+        matInput
+        placeholder="scheduleArrivalDateTime"
+        ngModel
+        name="scheduleArrivalDateTime"
+      />
+    </div>
+    <div>
+      <input
+        type="datetime-local"
+        matInput
+        placeholder="estimatedArrivalDateTime"
+        ngModel
+        name="estimatedArrivalDateTime"
+      />
+    </div>
+    <div>
+      <input
+        type="number"
+        matInput
+        placeholder="fareAmount"
+        ngModel
+        name="fareAmount"
+      />
+    </div>
+    <div>
+      <input
+        type="number"
+        matInput
+        placeholder="fareTax"
+        ngModel
+        name="fareTax"
+      />
+    </div>
+    <div>
+      <input
+        type="number"
+        matInput
+        placeholder="totalFare"
+        ngModel
+        name="totalFare"
+      />
+    </div>
+    <div>
+      <label for="flexiTicket">Flexible Ticket</label>
+      <br />
+      <mat-radio-group ngModel name="flexiTicket">
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let choice of chooser"
+          [value]="choice"
+        >
+          {{ choice }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div>
+      <div>
+        <label for="movieEnabled">Movie Enabled</label>
+        <br />
+        <mat-radio-group ngModel name="movieEnabled">
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let choice of chooser"
+            [value]="choice"
+          >
+            {{ choice }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div>
+      <input
+        type="number"
+        matInput
+        placeholder="rating"
+        ngModel
+        name="rating"
+      />
+    </div>
+    <div>
+      <label for="runningStatus">Running Status</label>
+      <br />
+      <mat-radio-group ngModel name="runningStatus">
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let choice of chooser"
+          [value]="choice"
+        >
+          {{ choice }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary">Add Bus</button>
+  </form>
+</div> -->

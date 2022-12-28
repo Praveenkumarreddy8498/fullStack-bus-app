@@ -1,3 +1,33 @@
+<p>
+    <mat-toolbar color="">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+      <button mat-icon-button  [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+        <mat-icon>home</mat-icon>
+
+      </button>
+      </button>
+      <span>Bus-application</span>
+      <span class="example-spacer"></span>
+      <h6>{{user}}</h6>
+      <button mat-icon-button  >
+        <mat-icon >account_box</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="logout-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon aria-hidden="false" (click)="onLogout()">logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+  
+
 <!-- <app-data-access></app-data-access> -->
 <app-dashboard></app-dashboard>
+<app-add-edit></app-add-edit>
 <router-outlet></router-outlet>

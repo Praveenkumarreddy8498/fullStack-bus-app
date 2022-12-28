@@ -12,6 +12,9 @@ export class BusService {
   constructor(private _httpclient:HttpClient) {
 
   }
+  // getCount=():void=>{
+  //   return this._httpclient.get()
+  // }
  getBusData=():Observable<Bus[]>=>{
    return this._httpclient.get<Bus[]>(this._BaseUrl+`/sort/${1}/${3}`)
  }
@@ -20,8 +23,8 @@ addBus=(bus:Bus)=>{
 }
 
 
-getBusById=():Observable<Bus>=>{
-  return this._httpclient.get<Bus>(this._BaseUrl)
+getBusById=(id:number):Observable<Bus>=>{
+  return this._httpclient.get<Bus>(this._BaseUrl+"/"+id)
 }
 
 }

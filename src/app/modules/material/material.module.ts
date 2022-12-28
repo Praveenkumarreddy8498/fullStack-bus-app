@@ -12,6 +12,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 // import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
@@ -29,7 +32,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatPaginatorModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatAutocompleteModule
     
   ],
   exports: [
@@ -45,6 +50,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatCheckboxModule,
     MatRadioModule,
     MatTableModule,
+    MatSelectModule,
+    MatAutocompleteModule
   ],
 })
 export class MaterialModule {}
