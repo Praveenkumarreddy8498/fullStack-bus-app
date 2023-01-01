@@ -6,7 +6,8 @@
 >
   {{ isShown === false ? "Add" : "Hide Add" }} Form
 </button> -->
-<form
+<div class="table">
+  <form
   [formGroup]="addBusForm"
   class="example-form"
   (ngSubmit)="onAddBus(addBusForm)"
@@ -18,7 +19,6 @@
         <mat-form-field appearance="outline">
           <input
             matInput
-
             type="number"
             placeholder="busId"
             formControlName="busId"
@@ -65,11 +65,7 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Bus Type</mat-label>
-          <mat-select
-            placeholder="busType"
-            matInput
-            formControlName="busType"
-          >
+          <mat-select placeholder="busType" matInput formControlName="busType">
             <mat-option
               *ngFor="let busType of busTypeSelect"
               [value]="busType.value"
@@ -78,7 +74,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
 
         <!-- <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Bus Type</mat-label>
@@ -105,7 +100,6 @@
           <mat-select
             placeholder="busServiceType"
             formControlName="busServiceType"
-
           >
             <mat-option
               *ngFor="let busType of busServiceTypeSelect"
@@ -193,7 +187,6 @@
             matInput
             placeholder="scheduleDepartureDateTime"
             formControlName="scheduleDepartureDateTime"
-
           />
         </mat-form-field>
       </td>
@@ -201,6 +194,16 @@
     <tr>
       <td>scheduleArrivalDateTime</td>
       <td>
+        <!-- <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="scheduleArrivalDateTime"
+             [min]="minDate" [max]="maxDate" [disabled]="disabled">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+             [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+             [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" 
+             [disableMinute]="disableMinute" [hideTime]="hideTime">
+          </ngx-mat-datetime-picker>
+       </mat-form-field> -->
         <mat-form-field>
           <input
             type="datetime-local"
@@ -288,7 +291,6 @@
             class="example-radio-button"
             *ngFor="let choice of chooser"
             [value]="choice"
-
           >
             {{ choice }}
           </mat-radio-button>
@@ -324,226 +326,11 @@
       </td>
     </tr>
     <br />
-    <tr>
-      <td>
-        <button id="add-bus" type="submit" mat-raised-button color="primary">
-          Add Bus
-        </button>
-      </td>
-    </tr>
+    <div>
+      <button id="add-bus" type="submit" mat-raised-button color="primary" [disabled]="addBusForm.invalid">
+        {{ editForm === undefined ? "Add" : "Update" }} Bus Data
+      </button>
+    </div>
   </table>
 </form>
-<!-- <button (click)="onclick()">
-clickme
-</button> -->
-
-<!-- <div>
-  <button
-    *ngIf="user === 'manager' || user === 'editor'"
-    (click)="isShown = !isShown"
-    mat-raised-button
-    color="accent"
-  >
-    {{ isShown === false ? "Add" : "Hide Add" }} Form
-  </button>
-
-  <br />
-  <form
-    #addBusForm="ngForm"
-    class="example-form"
-    *ngIf="isShown"
-    (ngSubmit)="onAddBus(addBusForm)"
-  >
-    <div>
-      Bus ID<input
-        matInput
-        type="number"
-        placeholder="busId"
-        ngModel
-        name="busId"
-      />
-    </div>
-    <div>
-      <mat-form-field appearance="outline">
-        <input
-          type="number"
-          matInput
-          placeholder="busServiceNum"
-          ngModel
-          name="busServiceNum"
-        />
-      </mat-form-field>
-    </div>
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="busPlateNum"
-        ngModel
-        name="busPlateNum"
-      />
-    </div>
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="busType"
-        ngModel
-        name="busType"
-      />
-    </div>
-
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="busServiceType"
-        ngModel
-        name="busServiceType"
-      />
-    </div>
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="startingPoint"
-        ngModel
-        name="startingPoint"
-      />
-    </div>
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="destination"
-        ngModel
-        name="destination"
-      />
-    </div>
-    <div>
-      <input
-        type="number"
-        matInput
-        placeholder="busStops"
-        ngModel
-        name="busStops"
-      />
-    </div>
-    <div>
-      <input
-        type="text"
-        matInput
-        placeholder="busDuration"
-        ngModel
-        name="busDuration"
-      />
-    </div>
-
-    <div>
-      <input
-        type="datetime-local"
-        matInput
-        placeholder="scheduleDepartureDateTime"
-        ngModel
-        name="scheduleDepartureDateTime"
-      />
-    </div>
-    <div>
-      <input
-        type="datetime-local"
-        matInput
-        placeholder="scheduleArrivalDateTime"
-        ngModel
-        name="scheduleArrivalDateTime"
-      />
-    </div>
-    <div>
-      <input
-        type="datetime-local"
-        matInput
-        placeholder="estimatedArrivalDateTime"
-        ngModel
-        name="estimatedArrivalDateTime"
-      />
-    </div>
-    <div>
-      <input
-        type="number"
-        matInput
-        placeholder="fareAmount"
-        ngModel
-        name="fareAmount"
-      />
-    </div>
-    <div>
-      <input
-        type="number"
-        matInput
-        placeholder="fareTax"
-        ngModel
-        name="fareTax"
-      />
-    </div>
-    <div>
-      <input
-        type="number"
-        matInput
-        placeholder="totalFare"
-        ngModel
-        name="totalFare"
-      />
-    </div>
-    <div>
-      <label for="flexiTicket">Flexible Ticket</label>
-      <br />
-      <mat-radio-group ngModel name="flexiTicket">
-        <mat-radio-button
-          class="example-radio-button"
-          *ngFor="let choice of chooser"
-          [value]="choice"
-        >
-          {{ choice }}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-    <div>
-      <div>
-        <label for="movieEnabled">Movie Enabled</label>
-        <br />
-        <mat-radio-group ngModel name="movieEnabled">
-          <mat-radio-button
-            class="example-radio-button"
-            *ngFor="let choice of chooser"
-            [value]="choice"
-          >
-            {{ choice }}
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </div>
-    <div>
-      <input
-        type="number"
-        matInput
-        placeholder="rating"
-        ngModel
-        name="rating"
-      />
-    </div>
-    <div>
-      <label for="runningStatus">Running Status</label>
-      <br />
-      <mat-radio-group ngModel name="runningStatus">
-        <mat-radio-button
-          class="example-radio-button"
-          *ngFor="let choice of chooser"
-          [value]="choice"
-        >
-          {{ choice }}
-        </mat-radio-button>
-      </mat-radio-group>
-    </div>
-
-    <button type="submit" mat-raised-button color="primary">Add Bus</button>
-  </form>
-</div> -->
+</div>

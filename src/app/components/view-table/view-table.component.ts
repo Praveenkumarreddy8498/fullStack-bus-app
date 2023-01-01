@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-table',
@@ -9,11 +10,12 @@ import { BusService } from 'src/app/services/bus.service';
   styleUrls: ['./view-table.component.css']
 })
 export class ViewTableComponent implements OnInit {
-  busData!:Bus;
+  bus!:Bus;
   busid: number = 0;
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _busService: BusService
+    private _busService: BusService,
+    private _location:Location
   ) {}
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((map) => {
@@ -23,9 +25,17 @@ export class ViewTableComponent implements OnInit {
     this._busService.getBusById(this.busid).subscribe({
       next:(data: any)=>{
         console.log(data);
-        this.busData=data;
+        this.bus=data;
       },
   });
+  
+}
+backClicked(){
+  this._location.back();
+}
+forwardClicked(){
+  this._location.forward();
 
 }
+
 }

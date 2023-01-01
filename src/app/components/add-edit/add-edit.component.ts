@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
-import { DatePipe } from '@angular/common';
-
-
+import { ActivatedRoute } from '@angular/router';
+import { UtilService } from 'src/app/services/util.service';
 interface BusData {
   value: string;
-  // viewValue: string;
 }
 
 @Component({
@@ -17,12 +15,9 @@ interface BusData {
   styleUrls: ['./add-edit.component.css'],
 })
 export class AddEditComponent implements OnInit {
-  // show: Boolean = false;
-  // busList: Bus[] = [];
-  // isShown: boolean = true;
- 
   bus!: Bus;
-  editBus!:Bus
+  editBus!: Bus;
+  editForm!: boolean;
 
   chooser: boolean[] = [true, false];
   busTypeSelect: BusData[] = [
@@ -31,112 +26,79 @@ export class AddEditComponent implements OnInit {
     { value: 'Diesel' },
     { value: 'EcoFriendly' },
   ];
-  busServiceTypeSelect: BusData[] = [
-    { value: 'Seater' },
-    { value: 'Sleeper' },
-  ];
-  constructor(private _authService: AuthService,private _busService:BusService, private _datepipe:DatePipe) {
-    // this._datepipe.transform(this.bus.estimatedArrivalDateTime, 'medium');
-    // console.log("Here");
-    // console.log(this.bus.estimatedArrivalDateTime );
-  }
+  busServiceTypeSelect: BusData[] = [{ value: 'Seater' }, { value: 'Sleeper' }];
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _authService: AuthService,
+    private _busService: BusService,
+    private _utilService: UtilService
+  ) {}
   ngOnInit(): void {
-    // this.bus=new Bus(0,0,'','','',0,'','',0,'',new Date(0,0,0,0,0),new Date(0,0,0,0,0),new Date(0,0,0,0,0),0,0,0,true,true,0,true)
+    // this.editForm=true;
+    this._activatedRoute.paramMap.subscribe((map) => {
+      let bId = map.get('id');
 
-    // new Date(year, monthIndex, day, hours, minutes)
+      if (bId) {
+        this.editForm = true;
+        this._busService.getBusById(parseInt(bId)).subscribe({
+          next: (data) => {
+            this.addBusForm.setValue(data);
 
-
-    /*this.editBus={
-      busId:0,
-      busServiceNum:0,
-      busPlateNum:'',
-      busType:'',
-      busServiceType:'',
-      busCapacity:0,
-      startingPoint:'',
-      destination:'',
-      busStops:0,
-      busDuration:'',
-      scheduleDepartureDateTime:new Date(),
-      scheduleArrivalDateTime:new Date(),
-      estimatedArrivalDateTime:new Date(),
-      fareAmount:0,
-      fareTax:0,
-      totalFare:0,
-      flexiTicket:false,
-      movieEnabled:false,
-      rating:0,
-      runningStatus:true,
-      
-    }*/
-
-    this._busService.getBusById(1).subscribe({
-      next: (data) => {
-        this.addBusForm.setValue(data)
-        console.log(data);
+            this.addBusForm.patchValue({
+              scheduleDepartureDateTime: this._utilService.dateUtil(
+                data.scheduleDepartureDateTime
+              ),
+              scheduleArrivalDateTime: this._utilService.dateUtil(
+                data.scheduleArrivalDateTime
+              ),
+              estimatedArrivalDateTime: this._utilService.dateUtil(
+                data.estimatedArrivalDateTime
+              ),
+            });
+          },
+        });
       }
-      })
-    // this.addBusForm.patchValue({scheduleDepartureDateTime:new Date("2023-01-14T06:00:00.000+00:00"),flexiTicket:false})
-    
+    });
   }
-  
+
   addBusForm = new FormGroup({
-    busId: new FormControl(),
-    busServiceNum: new FormControl(),
-    busPlateNum: new FormControl(),
-    busType: new FormControl(),
-    busServiceType: new FormControl(),
-    busCapacity: new FormControl(),
-    startingPoint: new FormControl(),
-    destination: new FormControl(),
-    busStops: new FormControl(),
-    busDuration: new FormControl(),
-    scheduleDepartureDateTime: new FormControl(),
-    scheduleArrivalDateTime: new FormControl(),
-    estimatedArrivalDateTime: new FormControl(),
-    fareAmount: new FormControl(),
-    fareTax: new FormControl(),
-    totalFare: new FormControl(),
-    flexiTicket: new FormControl(),
-    movieEnabled: new FormControl(),
-    rating: new FormControl(),
-    runningStatus: new FormControl(),
+    busId: new FormControl<number | null>(null, Validators.required),
+    busServiceNum: new FormControl<number | null>(null, Validators.required),
+    busPlateNum: new FormControl('', Validators.required),
+    busType: new FormControl('', Validators.required),
+    busServiceType: new FormControl('', Validators.required),
+    busCapacity: new FormControl<number | null>(null, Validators.required),
+    startingPoint: new FormControl('', Validators.required),
+    destination: new FormControl('', Validators.required),
+    busStops: new FormControl<number | null>(null, Validators.required),
+    busDuration: new FormControl('', Validators.required),
+    scheduleDepartureDateTime: new FormControl('', Validators.required),
+    scheduleArrivalDateTime: new FormControl('', Validators.required),
+    estimatedArrivalDateTime: new FormControl('', Validators.required),
+    fareAmount: new FormControl<number | null>(null, Validators.required),
+    fareTax: new FormControl<number | null>(null, Validators.required),
+    totalFare: new FormControl<number | null>(null, Validators.required),
+    flexiTicket: new FormControl<boolean | null>(null, Validators.required),
+    movieEnabled: new FormControl<boolean | null>(null, Validators.required),
+    rating: new FormControl<number | null>(null, Validators.required),
+    runningStatus: new FormControl<boolean | null>(null, Validators.required),
   });
   onAddBus(addBus: any) {
-    // console.log(this.addBusForm.value);
-    // this.bus=addBus.value;
-    console.log(this.bus);
-console.log(addBus.value);
-    // console.log(this.bus);
-    /*this._busService.addBus(addBus.value).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      // error: (error) => {
-      //   console.log(error);
-      // },
-      // complete: () => {
-      //   console.log('complete');
-      // },
-    });/*/
- 
+    if (this.editForm) {
+      console.log(` Updating`);
+      console.log(addBus.value);
+      this._busService.updateBus(addBus.value).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+      });
+    } else {
+      console.log(`For Adding`);
+      this._busService.addBus(addBus.value).subscribe({
+        next: (data) => console.log(data),
+        error: (error) => console.log(error),
+        complete: () => console.log('Bus Added'),
+      });
+    }
   }
-// onclick(){
-//   this._busService.getBusById("1").subscribe({
-//     next: (data) => {
-//       console.log(data);
-//       // console.log(this.user);
-
-//       this.editBus = data;
-
-//     },
-//     error: (error) => {
-//       console.log(error);
-//     },
-//     complete: () => {
-//       console.log('complete');
-//     },
-//   });
-// }
-
 }

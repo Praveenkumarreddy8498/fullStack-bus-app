@@ -1,4 +1,92 @@
-<p>
-    Hello in view table 
-</p>
-{{busData|json}}
+<button (click)="backClicked()">
+    Back
+</button>
+<button (click)="forwardClicked()">
+    Front
+</button>
+<div >
+    <table >
+        <tr>
+          <td>Id</td>
+          <td>{{ bus.busId }}</td>
+        </tr>
+        <tr>
+          <td>Service No</td>
+          <td>{{ bus.busServiceNum }}</td>
+        </tr>
+        
+      <tr>
+          <td>busPlateNum</td>
+          <td>{{ bus.busPlateNum }}</td>
+      </tr>
+      <tr>
+          <td>busType</td>
+          <td>{{ bus.busType }}</td>
+      </tr>
+      <tr>
+          <td>busServiceType</td>
+          <td>{{ bus.busServiceType }}</td>
+      </tr>
+      <tr>
+          <td>busCapacity</td>
+          <td>{{ bus.busCapacity }}</td>
+      </tr>
+      <tr>
+          <td>startingPoint</td>
+          <td>{{ bus.startingPoint }}</td>
+      </tr>
+      <tr>
+          <td>destination</td>
+          <td>{{ bus.destination }}</td>
+      </tr>
+      <tr>
+          <td>busStops</td>
+          <td>{{ bus.busStops }}</td>
+      </tr>
+      <tr>
+          <td>busDuration</td>
+          <td>{{ bus.busDuration }}</td>
+      </tr>
+      <tr>
+          <td>scheduleDepartureDateTime</td>
+          <td>{{ bus.scheduleDepartureDateTime|date:'short':'UTC' }}</td>
+      </tr>
+      <tr>
+          <td>scheduleArrivalDateTime</td>
+          <td>{{ bus.scheduleArrivalDateTime|date:'short':'UTC'  }}</td>
+      </tr>
+      <tr>
+          <td>estimatedArrivalDateTime</td>
+          <td>{{ bus.estimatedArrivalDateTime|date:'short':'UTC'  }}</td>
+      </tr>
+      <tr>
+          <td>fareAmount</td>
+          <td>{{ bus.fareAmount }}</td>
+      </tr>
+      <tr>
+          <td>fareTax</td>
+          <td>{{ bus.fareTax }}</td>
+      </tr>
+      <tr>
+          <td>totalFare</td>
+          <td>{{ bus.totalFare }}</td>
+      </tr>
+      <tr>
+          <td>flexiTicket</td>
+          <td>{{ bus.flexiTicket }}</td>
+      </tr>
+      <tr>
+          <td>movieEnabled</td>
+          <td>{{ bus.movieEnabled }}</td>
+      </tr>
+      <tr>
+          <td>rating</td>
+          <td>{{ bus.rating }}</td>
+      </tr>
+      <tr>
+          <td>runningStatus</td>
+          <td>{{ bus.runningStatus }}</td>
+      </tr>
+      </table>
+      
+</div>

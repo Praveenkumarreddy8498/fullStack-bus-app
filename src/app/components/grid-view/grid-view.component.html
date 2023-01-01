@@ -1,0 +1,47 @@
+
+<button (click)="backClicked()" mat-rased-button style="margin-top: 20px;" >
+
+  <span class="material-icons">arrow_back</span>
+</button>
+<button (click)="frontClicked()" mat-rased-button style="margin-top: 20px;" >
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> -->
+    <span class="material-icons">arrow_forward</span>
+  </button>
+  
+
+<mat-card class="example-card" style="width: 97%">
+  <mat-card-content>
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="25"
+        fxFlex.sm="33"
+        fxFlex.xs="50"
+        *ngFor="let bus of busList"
+      >
+        <mat-grid-list cols="1" rowHeight="1:1" class="grid-list">
+          <mat-grid-tile
+            class="tile"
+            [routerLink]="['/view-details', bus.busId]"
+            routerLinkActive="router-link-active"
+          >
+           
+            <div>
+                <img src="https://img.freepik.com/premium-vector/bus-icon_609277-1523.jpg?w=2000" width="100px" height="100px" alt="">
+              <!-- <mat-icon style="width: 100px;"> directions_bus</mat-icon> -->
+
+              <h6>Id: {{ bus.busId }}</h6>
+              <h6>Starting point: {{ bus.startingPoint }}</h6>
+
+              <h6>Destination: {{ bus.destination }}</h6>
+              <h6>Departure: {{bus.scheduleDepartureDateTime|date:'short':'UTC'}}</h6>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </mat-card-content>
+  <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+</mat-card>

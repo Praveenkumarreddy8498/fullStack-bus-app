@@ -1,4 +1,4 @@
-<p>
+
     <mat-toolbar color="">
       <button
         mat-icon-button
@@ -6,6 +6,7 @@
         aria-label="Example icon-button with menu icon"
       >
       <button mat-icon-button  [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+
         <mat-icon>home</mat-icon>
 
       </button>
@@ -24,10 +25,13 @@
         <mat-icon aria-hidden="false" (click)="onLogout()">logout</mat-icon>
       </button>
     </mat-toolbar>
-  </p>
+  
   
 
 <!-- <app-data-access></app-data-access> -->
-<app-dashboard></app-dashboard>
-<app-add-edit></app-add-edit>
+<!-- <app-dashboard></app-dashboard> -->
+
+<!-- <app-add-edit></app-add-edit> -->
+<!-- <app-grid-view></app-grid-view> -->
+
 <router-outlet></router-outlet>

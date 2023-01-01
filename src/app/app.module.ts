@@ -11,9 +11,13 @@ import { AuthModule } from './auth/auth.module';
 import { ViewTableComponent } from './components/view-table/view-table.component';
 import { AddEditComponent } from './components/add-edit/add-edit.component';
 import { DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { GridViewComponent } from './components/grid-view/grid-view.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ViewTableComponent, AddEditComponent],
+  declarations: [AppComponent, DashboardComponent, ViewTableComponent, AddEditComponent, GridViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,8 +25,11 @@ import { DatePipe } from '@angular/common';
     MaterialModule,
     AuthModule,
     FormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    RouterModule,
+    MatGridListModule,
+    FlexLayoutModule
     
   ],
   providers: [DatePipe],
