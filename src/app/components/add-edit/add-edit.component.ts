@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
 import { ActivatedRoute } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
+import { Location } from '@angular/common';
 interface BusData {
   value: string;
 }
@@ -29,12 +30,11 @@ export class AddEditComponent implements OnInit {
   busServiceTypeSelect: BusData[] = [{ value: 'Seater' }, { value: 'Sleeper' }];
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _authService: AuthService,
     private _busService: BusService,
-    private _utilService: UtilService
+    private _utilService: UtilService,
+    private _location: Location
   ) {}
   ngOnInit(): void {
-    // this.editForm=true;
     this._activatedRoute.paramMap.subscribe((map) => {
       let bId = map.get('id');
 
@@ -100,5 +100,8 @@ export class AddEditComponent implements OnInit {
         complete: () => console.log('Bus Added'),
       });
     }
+  }
+  backClicked() {
+    this._location.back();
   }
 }

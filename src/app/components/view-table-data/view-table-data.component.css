@@ -1,0 +1,51 @@
+
+  
+div{
+    text-align: center;
+    
+
+}
+
+.view-table{
+  margin-left: 140px;
+  font-size: medium;
+border:2.5px solid rgb(39, 3, 3);
+border-radius: 5px;
+box-shadow: 5px 5px 5px 5px #4a4b4a;
+width: 800px;
+}
+.odd{
+  background-color: rgb(230, 215, 215);
+
+}
+.even{
+  background-color: rgb(213, 213, 222);
+
+}
+tr:hover{
+  background-color: aliceblue;
+}
+
+.buttonApply{
+  background-color: #3d2f2f;
+  color: rgb(255, 255, 255);
+}
+.marginApply{
+  margin: 10px 10px 10px 10px;
+}
+.example-card {
+  max-width: 300px;
+  margin-bottom: 50px;
+  float: left;
+  margin: 10px 10px 10px 10px;
+  box-shadow: 5px 5px 5px 5px #706b68;
+  background-color: rgb(227, 242, 242);
+
+}
+.example-card:hover{
+  background-color: rgb(210, 217, 191);
+}
+  
+h3{
+  font:italic;
+}

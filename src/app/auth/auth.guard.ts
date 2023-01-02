@@ -24,7 +24,6 @@ export class AuthGuard extends KeycloakAuthGuard {
     state: RouterStateSnapshot
   ) {
     const user = this._authService.getLoggedUser();
-    console.log(user);
 
     // Force the user to log in if currently unauthenticated.
     if (!user) {
@@ -36,8 +35,7 @@ export class AuthGuard extends KeycloakAuthGuard {
     // Get the roles required from the route.
     const requiredRoles = route.data['roles'];
     const userRoles = this._authService.getRoles();
-    console.log(requiredRoles);
-    console.log(userRoles);
+    
     // Allow the user to proceed if no additional roles are required to access the route.
     if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
       return true;

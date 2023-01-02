@@ -5,19 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TableViewComponent } from './components/table-view/table-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
-import { ViewTableComponent } from './components/view-table/view-table.component';
+import { ViewTableDataComponent } from './components/view-table-data/view-table-data.component';
 import { AddEditComponent } from './components/add-edit/add-edit.component';
-import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GridViewComponent } from './components/grid-view/grid-view.component';
+import { ListViewComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, ViewTableComponent, AddEditComponent, GridViewComponent],
+  declarations: [AppComponent, TableViewComponent, ViewTableDataComponent, AddEditComponent, GridViewComponent, ListViewComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,7 +32,7 @@ import { GridViewComponent } from './components/grid-view/grid-view.component';
     FlexLayoutModule
     
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

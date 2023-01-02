@@ -13,6 +13,5 @@ export function initializer(keycloak: KeycloakService): () => Promise<boolean> {
     bearerExcludedUrls:[],
   };
 
-  // console.log(keycloak.getToken());
   return()=>keycloak.init(options)
 }

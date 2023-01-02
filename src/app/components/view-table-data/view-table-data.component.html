@@ -1,0 +1,59 @@
+<button
+  mat-stroked-button
+  (click)="backClicked()"
+  [ngClass]="'buttonApply marginApply'"
+>
+  <mat-icon>arrow_back </mat-icon>
+</button>
+
+
+<div >
+  <mat-card class="example-card" style="width: 400px;">
+      <mat-card-title>Bus Details</mat-card-title>
+    <mat-card-content>
+      <img src="https://img.icons8.com/material-outlined/512/bus.png" width="100px" height="100px">
+      <h3>Id No: {{ bus.busId }}</h3>
+      <h3>Service No: {{ bus.busServiceNum }}</h3>
+      <h3>Plate No: {{ bus.busPlateNum }}</h3>
+      <h3>It is {{ bus.busType }} Bus</h3>
+      <h3>It is  {{ bus.busServiceType }} Bus</h3>
+      <h3>Capacity is {{bus.busCapacity}}</h3>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card" style="width: 400px;">
+      <mat-card-title>Journey Details</mat-card-title>
+    <mat-card-content>
+      <img src="https://img.icons8.com/windows/512/itinerary.png" width="100px" height="100px">
+      <h3> Starts at {{ bus.startingPoint}}</h3>
+      <h3>Ends at {{ bus.destination }}</h3>
+      <h3> Departure time is {{ bus.scheduleDepartureDateTime | date : "short" : "UTC" }}</h3>
+      <h3> Arrival Time is {{ bus.scheduleArrivalDateTime| date : "short" : "UTC" }}</h3>
+      <h3> Bus Stops In Between: {{bus.busStops}}</h3>
+      <h3>Duration is {{bus.busDuration}} Hours</h3>
+    </mat-card-content>
+  </mat-card>
+  
+  
+  <mat-card class="example-card" style="width: 400px">
+      <mat-card-title>Ticket Details</mat-card-title>
+      <img src="https://img.icons8.com/material-outlined/512/bus-ticket.png" width="100px" height="100px">
+    <mat-card-content>
+      <h3>Fare Amount {{ bus.fareAmount|currency:"INR"}}</h3>
+      <h3>Taxes {{ bus.fareTax|currency:"INR" }}</h3>
+      <h3>Total Amount {{ bus.totalFare|currency:"INR"}}</h3>
+      <h3>{{ bus.flexiTicket===true?"Ticket is Flexible ":"Ticket is Not Flexible"| titlecase }}</h3>
+
+  
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card" style="width: 400px">
+       <mat-card-title style="text-align: center; color: rgb(52, 33, 63);" >Other Info</mat-card-title>
+    <mat-card-content>
+      <img src="https://img.icons8.com/material-outlined/512/info.png" alt="info_img" width="100px" height="100px">
+      <h3>{{ bus.movieEnabled=== false?"Movie access unavailable":"Movie access available"| titlecase}}</h3>
+      <h3>{{ bus.runningStatus===true?"Bus is Running":"Bus in not Running" | titlecase}}</h3>
+  
+    </mat-card-content>
+  </mat-card>
+  
+</div>

@@ -1,25 +1,16 @@
-.tile {
-  /* background-color: rgb(210, 167, 167); */
-  /* margin: 25px 50px 75px 100px; */
-  /* border: 1px solid black; */
-  border: 5px solid #cccccc;
-  /* padding: 20px; */
-  /* width: 275px; */
-  text-align: center;
-  border-radius: 20px;
-  /* -moz-border-radius: 10px; */
-  /* -webkit-border-radius: 10px; */
-  /* -moz-box-shadow: 5px 5px 5px 5px #e37474;  */
-  /* -webkit-box-shadow: 5px 5px 5px 5px #d38181;  */
-  box-shadow: 5px 5px 5px 5px #4a4b4a;
+.tile{
+    border: 5px solid #cccccc;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px #4a4b4a;
 }
-.tile:hover{
-    background-color: rgb(148, 236, 166);
+.tile:hover {
+  background-color: rgb(213, 244, 219);
 }
 .mat-card {
   cursor: pointer;
 }
 
-h6{
-    font-size: medium;
+h6 {
+  font-size: medium;
 }

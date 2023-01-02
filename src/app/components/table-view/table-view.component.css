@@ -1,0 +1,62 @@
+.table-class{
+  display: flex;
+}
+.example-spacer {
+  flex: 1 1 auto;
+  text-align: center;
+}
+table {
+  width: 100%;
+}
+.mat-row {
+  height: auto;
+  cursor: pointer;
+}
+.table-class {
+  overflow:scroll;
+}
+.table-mat{
+  background-color: rgb(234, 233, 233);
+}
+.table-head{
+  background-color: #b7c3df;
+}
+a {
+  text-decoration: none;
+}
+.mat-cell,
+.mat-header-cell {
+  padding: 8px 8px 8px 20px;
+}
+.mat-row:hover {
+  background-color: rgb(214, 200, 184);
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+mat-grid-tile {
+  background: lightblue;
+}
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  margin-bottom: 16px;
+}
+.buttonApply{
+  background-color: #e6545b;
+  color: black;
+}

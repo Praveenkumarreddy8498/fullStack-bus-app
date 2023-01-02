@@ -1,336 +1,319 @@
-<!-- <button
-  *ngIf="user === 'manager' || user === 'editor'"
-  (click)="isShown = !isShown"
-  mat-raised-button
-  color="accent"
+<button
+  mat-flat-button
+  (click)="backClicked()"
+  [ngClass]="'buttonApply marginApply'"
 >
-  {{ isShown === false ? "Add" : "Hide Add" }} Form
-</button> -->
-<div class="table">
+  <mat-icon>arrow_back </mat-icon>
+</button>
+<div class="table-div" >
   <form
-  [formGroup]="addBusForm"
-  class="example-form"
-  (ngSubmit)="onAddBus(addBusForm)"
->
-  <table>
-    <tr>
-      <td>Bus Id</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            type="number"
-            placeholder="busId"
-            formControlName="busId"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <!-- <mat-error *ngIf="busId.touched&&busId.invalid&&busId.pristine">
-        Required 
-</mat-error> -->
-
-    <tr>
-      <td>busServiceNum</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="busServiceNum"
-            formControlName="busServiceNum"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <!-- <mat-error *ngIf="busServiceNum.touched&&busServiceNum.invalid&&busServiceNum.pristine">
-        Required 
-</mat-error> -->
-
-    <tr>
-      <td>busPlateNum</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="text"
-            matInput
-            placeholder="busPlateNum"
-            formControlName="busPlateNum"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>busType</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <mat-label>Bus Type</mat-label>
-          <mat-select placeholder="busType" matInput formControlName="busType">
-            <mat-option
-              *ngFor="let busType of busTypeSelect"
-              [value]="busType.value"
-            >
-              {{ busType.value }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <!-- <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Bus Type</mat-label>
-          <input type="text"
-                 placeholder="Pick one"
-                 aria-label="Number"
-                 matInput
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto">
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-            <mat-option *ngFor="let busType of busTypeSelect " [value]="busType.value">
-              {{busType.value}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field> -->
-      </td>
-    </tr>
-
-    <tr>
-      <td>busServiceType</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <mat-label>Bus Service Type</mat-label>
-          <mat-select
-            placeholder="busServiceType"
-            formControlName="busServiceType"
-          >
-            <mat-option
-              *ngFor="let busType of busServiceTypeSelect"
+    [formGroup]="addBusForm"
+    class="example-form"
+    (ngSubmit)="onAddBus(addBusForm)"
+  >
+    <table>
+      <tr>
+        <td>Bus Id</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
               matInput
-              [value]="busType.value"
+              type="number"
+              placeholder="busId"
+              formControlName="busId"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Bus Service No</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="busServiceNum"
+              formControlName="busServiceNum"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Bus Plate Num</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="busPlateNum"
+              formControlName="busPlateNum"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Bus Type</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <mat-label>Bus Type</mat-label>
+            <mat-select
+              placeholder="busType"
+              matInput
+              formControlName="busType"
             >
-              {{ busType.value }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>busCapacity</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="busCapacity"
-            formControlName="busCapacity"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
+              <mat-option
+                *ngFor="let busType of busTypeSelect"
+                [value]="busType.value"
+              >
+                {{ busType.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
 
-    <tr>
-      <td>startingPoint</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="text"
-            matInput
-            placeholder="startingPoint"
-            formControlName="startingPoint"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>destination</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="text"
-            matInput
-            placeholder="destination"
-            formControlName="destination"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>busStops</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="busStops"
-            formControlName="busStops"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>busDuration</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="busDuration"
-            formControlName="busDuration"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>scheduleDepartureDateTime</td>
-      <td>
-        <mat-form-field>
-          <input
-            type="datetime-local"
-            matInput
-            placeholder="scheduleDepartureDateTime"
-            formControlName="scheduleDepartureDateTime"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>scheduleArrivalDateTime</td>
-      <td>
-        <!-- <mat-form-field>
-          <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="scheduleArrivalDateTime"
-             [min]="minDate" [max]="maxDate" [disabled]="disabled">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
-             [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
-             [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" 
-             [disableMinute]="disableMinute" [hideTime]="hideTime">
-          </ngx-mat-datetime-picker>
-       </mat-form-field> -->
-        <mat-form-field>
-          <input
-            type="datetime-local"
-            matInput
-            placeholder="scheduleArrivalDateTime"
-            formControlName="scheduleArrivalDateTime"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>estimatedArrivalDateTime</td>
-      <td>
-        <mat-form-field>
-          <input
-            type="datetime-local"
-            matInput
-            placeholder="estimatedArrivalDateTime"
-            formControlName="estimatedArrivalDateTime"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>fareAmount</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="fareAmount"
-            formControlName="fareAmount"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>fareTax</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="fareTax"
-            formControlName="fareTax"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>totalFare</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="totalFare"
-            formControlName="totalFare"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
+      <tr>
+        <td>Bus Service Type</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <mat-label>Service Type</mat-label>
+            <mat-select
+              placeholder="busServiceType"
+              formControlName="busServiceType"
+            >
+              <mat-option
+                *ngFor="let busType of busServiceTypeSelect"
+                matInput
+                [value]="busType.value"
+              >
+                {{ busType.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>busCapacity</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="busCapacity"
+              formControlName="busCapacity"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
 
-    <tr>
-      <td>flexiTicket</td>
-      <td>
-        <mat-radio-group formControlName="flexiTicket">
-          <mat-radio-button
-            matInput
-            class="example-radio-button"
-            *ngFor="let choice of chooser"
-            [value]="choice"
-          >
-            {{ choice }}
-          </mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-    <tr>
-      <td>movieEnabled</td>
-      <td>
-        <mat-radio-group formControlName="movieEnabled">
-          <mat-radio-button
-            matInput
-            class="example-radio-button"
-            *ngFor="let choice of chooser"
-            [value]="choice"
-          >
-            {{ choice }}
-          </mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-    <tr>
-      <td>rating</td>
-      <td>
-        <mat-form-field appearance="outline">
-          <input
-            type="number"
-            matInput
-            placeholder="rating"
-            formControlName="rating"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>runningStatus</td>
-      <td>
-        <mat-radio-group formControlName="runningStatus">
-          <mat-radio-button
-            matInput
-            class="example-radio-button"
-            *ngFor="let choice of chooser"
-            [value]="choice"
-          >
-            {{ choice }}
-          </mat-radio-button>
-        </mat-radio-group>
-      </td>
-    </tr>
-    <br />
-    <div>
-      <button id="add-bus" type="submit" mat-raised-button color="primary" [disabled]="addBusForm.invalid">
-        {{ editForm === undefined ? "Add" : "Update" }} Bus Data
-      </button>
-    </div>
-  </table>
-</form>
+      <tr>
+        <td>Starting Point</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="startingPoint"
+              formControlName="startingPoint"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Destination</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="text"
+              matInput
+              placeholder="destination"
+              formControlName="destination"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>No of Stops</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="busStops"
+              formControlName="busStops"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="busDuration"
+              formControlName="busDuration"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Scheduled Departure</td>
+        <td>
+          <mat-form-field>
+            <input
+              type="datetime-local"
+              matInput
+              placeholder="scheduleDepartureDateTime"
+              formControlName="scheduleDepartureDateTime"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Scheduled Arrival </td>
+        <td>
+          <mat-form-field>
+            <input
+              type="datetime-local"
+              matInput
+              placeholder="scheduleArrivalDateTime"
+              formControlName="scheduleArrivalDateTime"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Estimated Arrival </td>
+        <td>
+          <mat-form-field>
+            <input
+              type="datetime-local"
+              matInput
+              placeholder="estimatedArrivalDateTime"
+              formControlName="estimatedArrivalDateTime"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>Fare Amount</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="fareAmount"
+              formControlName="fareAmount"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Tax</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="fareTax"
+              formControlName="fareTax"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>Total Fare</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="totalFare"
+              formControlName="totalFare"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr >
+        <td>Rating</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <input
+              type="number"
+              matInput
+              placeholder="rating"
+              formControlName="rating"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr >
+        <td class="radio-class">Flexi Ticket</td>
+        <td class="radio-class">
+          <mat-radio-group formControlName="flexiTicket">
+            <mat-radio-button
+              matInput
+              class="example-radio-button"
+              *ngFor="let choice of chooser"
+              [value]="choice"
+              class="radio-button"
+            >
+              {{ choice }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+      <tr >
+        <td class="radio-class">Movie Enabled</td>
+        <td class="radio-class">
+          <mat-radio-group formControlName="movieEnabled">
+            <mat-radio-button
+              matInput
+              class="example-radio-button"
+              *ngFor="let choice of chooser"
+              [value]="choice"
+              class="radio-button"
+            >
+              {{ choice }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+
+      
+      <tr >
+        <td class="radio-class">Running Status</td>
+        <td class="radio-class">
+          <mat-radio-group formControlName="runningStatus">
+            <mat-radio-button
+              matInput
+              class="example-radio-button"
+              *ngFor="let choice of chooser"
+              [value]="choice"
+              class="radio-button"
+            >
+              {{ choice }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+      <br />
+      <div>
+        <button
+          id="add-bus"
+          type="submit"
+          mat-raised-button
+          [disabled]="addBusForm.invalid"
+        >
+          {{ editForm === undefined ? "Add" : "Update" }} Bus Data
+        </button>
+      </div>
+    </table>
+  </form>
 </div>

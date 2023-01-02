@@ -6,10 +6,10 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-table',
-  templateUrl: './view-table.component.html',
-  styleUrls: ['./view-table.component.css']
+  templateUrl: './view-table-data.component.html',
+  styleUrls: ['./view-table-data.component.css']
 })
-export class ViewTableComponent implements OnInit {
+export class ViewTableDataComponent implements OnInit {
   bus!:Bus;
   busid: number = 0;
   constructor(
@@ -24,7 +24,6 @@ export class ViewTableComponent implements OnInit {
     })
     this._busService.getBusById(this.busid).subscribe({
       next:(data: any)=>{
-        console.log(data);
         this.bus=data;
       },
   });

@@ -1,58 +1,14 @@
+.buttonApply{
+    background-color: #b48eb3;
+    color: white;
+  }
+.marginApply{
+    margin: 5px 5px 5px 5px;
+}
 .example-spacer {
   flex: 1 1 auto;
   text-align: center;
 }
-table {
-  width: 100%;
-}
-.mat-row {
-  height: auto;
-  cursor: pointer;
-}
-.table-class {
-  overflow:scroll;
-}
-a {
-  text-decoration: none;
-}
-.mat-cell,
-.mat-header-cell {
-  padding: 8px 8px 8px 20px;
-}
-.mat-row:hover {
-  background-color: rgb(250, 243, 200);
-}
-/* .user-icon{
-    padding-left: 50px;
-}
-.logout-icon{
-    padding-left: 50px;
-} */
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  align-items: flex-start;
-}
-
-.example-radio-button {
-  margin: 5px;
-}
-mat-grid-tile {
-  background: lightblue;
-}
-mat-toolbar {
-  justify-content: space-between;
-}
-
-.content {
-  padding: 16px;
-}
-
-.content > mat-card {
-  margin-bottom: 16px;
-}
-.buttonApply{
-  background-color: #e6545b;
-  color: black;
+.paginator{
+  position: fixed;
 }

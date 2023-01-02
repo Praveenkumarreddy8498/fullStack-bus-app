@@ -8,7 +8,7 @@ import { Bus } from '../models/bus';
 })
 export class BusService implements OnInit {
  
-  private _BaseUrl = `http://localhost:9000/bus-api/bus`;
+  private _BaseUrl = `http://localhost:9000/bus-api-cud/bus`;
   private _BaseUrlRetrive = `http://localhost:9000/bus-api-retrive/bus`;
 
   constructor(private _httpclient:HttpClient) {

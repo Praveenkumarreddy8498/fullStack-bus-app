@@ -2,5 +2,7 @@
     flex: 1 1 auto;
     text-align: center;
   }
-
+.mat-toolbar{
+  display: flex;
+}
   

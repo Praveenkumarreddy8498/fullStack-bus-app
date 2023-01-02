@@ -19,4 +19,7 @@ export class AppComponent implements OnInit {
     this._authService.logout();
     
   }
+  onUserProfile(){
+    this._authService.redirectToProfile();
+  }
 }
