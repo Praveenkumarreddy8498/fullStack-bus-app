@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { GridViewComponent } from './components/grid-view/grid-view.component';
-import { ListViewComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, TableViewComponent, ViewTableDataComponent, AddEditComponent, GridViewComponent, ListViewComponent],
+  declarations: [AppComponent, TableViewComponent, ViewTableDataComponent, AddEditComponent, GridViewComponent, DashboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

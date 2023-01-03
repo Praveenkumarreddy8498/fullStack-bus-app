@@ -7,6 +7,8 @@ import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
 import { UtilService } from 'src/app/services/util.service';
 import { Location } from '@angular/common';
+import { MatTableDataSource } from '@angular/material/table'
+
 interface sortData {
   value: string;
   viewValue: string;
@@ -17,17 +19,18 @@ interface sortData {
   styleUrls: ['./table-view.component.css'],
 })
 export class TableViewComponent implements OnInit {
-  @Input() busList: Bus[] = [];
+  @Input() busList!: Bus[];
   bus!: Bus;
-  userRoles!: string[];
   user!: string;
   pageEvent!: PageEvent;
-  pageNo: number = 1;
-  pageSize: number = 10;
+  @Input() pageNo!: number ;
+  @Input() pageSize!: number;
   @Input() documentCount!: number;
   @Input() displayedColumns!: string[];
   @Input() columns!: string[];
-  backButton!: boolean;
+  sortTypeToggle: boolean = false;
+  // dataSource = new MatTableDataSource(this.busList);
+  // dataSource.data=this.busList;
   sortTypeChooser: sortData[] = [
     { value: 'asc', viewValue: 'Ascending' },
     { value: 'desc', viewValue: 'Descending' },
@@ -67,6 +70,12 @@ export class TableViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // console.log(this.pageNo);
+    // console.log(this.pageSize);
+
+    // console.log(this.busList);
+ 
+  // console.log(this.dataSource.data);
     this.user = this._utilService.getUserRole();
   }
 
@@ -78,57 +87,45 @@ export class TableViewComponent implements OnInit {
   }
 
   showDetails(event: Event, bus: Bus) {
-    // console.log((event.target as HTMLElement).nodeName);
     if ((event.target as HTMLElement).nodeName === 'MAT-ICON') {
       console.log(`Deleted`);
       return;
     }
+    this._router.navigate(['/view-table-data',bus.busId]);
+  }
 
-    this._router.navigate(['/view-table-data', bus.busId]);
-  }
-  onChangePage(event: PageEvent) {
-    this.pageNo = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this._busService
-      .getBusDataBySort('busId', 'asc', event.pageIndex + 1, event.pageSize)
-      .subscribe({
-        next: (data) => {
-          this.busList = data;
-        },
-      });
-  }
   onDelete(id: number) {
     this._busService.deleteById(id).subscribe({
       next: (data) => console.log(data),
       error: (error) => console.log(error),
       complete: () => console.log('Deleted'),
     });
-    this._router.navigate(['/dashboard']);
-
-  }
-  onSort(sortForm: any) {
-    this._busService
-      .getBusDataBySort(
-        sortForm.sortColumnControl,
-        sortForm.sortTypeControl,
-        this.pageNo,
-        this.pageSize
-      )
-      .subscribe({
-        next: (data) => {
-          this.busList = data;
-        },
-      });
   }
 
-  onColumnSelect(event: any) {
-    this.backButton = true;
-    console.log(event.value);
-    this.displayedColumns = event.value;
-    console.log(this.displayedColumns);
+  sortSelect(column: string) {
+    this.sortTypeToggle = !this.sortTypeToggle;
+    if (this.sortTypeToggle) {
+     
+      this._busService
+        .getBusDataBySort(column, 'asc', this.pageNo, this.pageSize)
+        .subscribe({
+          next: (data) => {
+            this.busList = data;
+          },
+        });
+    } else if (!this.sortTypeToggle) {
+     
+      this._busService
+        .getBusDataBySort(column, 'desc', this.pageNo , this.pageSize)
+        .subscribe({
+          next: (data) => {
+            this.busList = data;
+          },
+        });
+    }
   }
-
-  selectAll() {
-    this._location.back();
-  }
+//   applyFilter(event: Event) {
+//     const filterValue = (event.target as HTMLInputElement).value;
+//     this.dataSource.filter = filterValue.trim().toLowerCase();
+// }
 }

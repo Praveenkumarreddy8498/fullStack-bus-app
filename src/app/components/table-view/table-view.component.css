@@ -26,7 +26,9 @@ a {
 }
 .mat-cell,
 .mat-header-cell {
-  padding: 8px 8px 8px 20px;
+  padding: 20px 20px 20px 20px;
+  
+
 }
 .mat-row:hover {
   background-color: rgb(214, 200, 184);
@@ -35,7 +37,7 @@ a {
 .example-radio-group {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+  margin: 15px 0px;
   align-items: flex-start;
 }
 
@@ -60,3 +62,4 @@ mat-toolbar {
   background-color: #e6545b;
   color: black;
 }
+

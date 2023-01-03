@@ -1,103 +1,268 @@
-<div class="table-class" fxFlex="100" fxFlex.sm="100" fxFlex.xs="100"  >
+
+<div class="table-class" fxFlex="100" fxFlex.sm="100" fxFlex.xs="100">
   <!-- fxFlex.md="60" fxFlex.lg="70" fxFlex.gt-lg="80" fxFlex.xs="40" -->
-  <table mat-table [dataSource]="busList" class="table-mat">
+ 
+  <table mat-table [dataSource]="busList" class="table-mat" >
     <ng-container matColumnDef="busId">
-      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busId</h4>
+        <button (click)="sortSelect('busId')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busId }}</td>
     </ng-container>
 
     <ng-container matColumnDef="busServiceNum">
-      <th mat-header-cell *matHeaderCellDef>serviceNo</th>
+      <th mat-header-cell *matHeaderCellDef class="header-data">
+        <h4>serviceNo</h4>
+        <button (click)="sortSelect('busServiceNum')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.busServiceNum }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="busPlateNum">
-      <th mat-header-cell *matHeaderCellDef>Plate no</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busPlateNum</h4>
+        
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.busPlateNum }}
       </td>
     </ng-container>
     <ng-container matColumnDef="busType">
-      <th mat-header-cell *matHeaderCellDef>busType</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busType</h4>
+       
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="busServiceType">
-      <th mat-header-cell *matHeaderCellDef>busServiceType</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busServiceType</h4>
+        
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busServiceType }}</td>
     </ng-container>
     <ng-container matColumnDef="busCapacity">
-      <th mat-header-cell *matHeaderCellDef>busCapacity</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busCapacity</h4>
+        <button (click)="sortSelect('busCapacity')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busCapacity }}</td>
     </ng-container>
     <ng-container matColumnDef="startingPoint">
-      <th mat-header-cell *matHeaderCellDef>startingPoint</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>startingPoint</h4>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.startingPoint }}</td>
     </ng-container>
     <ng-container matColumnDef="destination">
-      <th mat-header-cell *matHeaderCellDef>destination</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>destination</h4>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.destination }}</td>
     </ng-container>
     <ng-container matColumnDef="busStops">
-      <th mat-header-cell *matHeaderCellDef>busStops</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busStops</h4>
+        <button (click)="sortSelect('busStops')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busStops }}</td>
     </ng-container>
     <ng-container matColumnDef="busDuration">
-      <th mat-header-cell *matHeaderCellDef>busDuration</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>busDuration</h4>
+        <button (click)="sortSelect('busDuration')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busDuration }}</td>
     </ng-container>
     <ng-container matColumnDef="scheduleDepartureDateTime">
-      <th mat-header-cell *matHeaderCellDef>scheduleDepartureDateTime</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>scheduleDepartureDateTime</h4>
+        <button (click)="sortSelect('dep_date')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.scheduleDepartureDateTime | date : "short" : "UTC" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="scheduleArrivalDateTime">
-      <th mat-header-cell *matHeaderCellDef>scheduleArrivalDateTime</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>scheduleArrivalDateTime</h4>
+        <button (click)="sortSelect('arr_date')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.scheduleArrivalDateTime | date : "short" : "UTC" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="estimatedArrivalDateTime">
-      <th mat-header-cell *matHeaderCellDef>estimatedArrivalDateTime</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>estimatedArrivalDateTime</h4>
+        <button (click)="sortSelect('est_date')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.estimatedArrivalDateTime | date : "short" : "UTC" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="fareAmount">
-      <th mat-header-cell *matHeaderCellDef>fareAmount</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>fareAmount</h4>
+        <button (click)="sortSelect('fareAmount')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.fareAmount | currency : "INR" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="fareTax">
-      <th mat-header-cell *matHeaderCellDef>fareTax</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>fareTax</h4>
+        <button (click)="sortSelect('fareTax')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.fareTax | currency : "INR" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="totalFare">
-      <th mat-header-cell *matHeaderCellDef>totalFare</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>totalFare</h4>
+        <button (click)="sortSelect('totalFare')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.totalFare | currency : "INR" }}
       </td>
     </ng-container>
     <ng-container matColumnDef="flexiTicket">
-      <th mat-header-cell *matHeaderCellDef>flexiTicket</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>flexiTicket</h4>
+        <button (click)="sortSelect('flexiTicket')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.flexiTicket }}</td>
     </ng-container>
     <ng-container matColumnDef="movieEnabled">
-      <th mat-header-cell *matHeaderCellDef>movieEnabled</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>movieEnabled</h4>
+        <button (click)="sortSelect('movieEnabled')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.movieEnabled }}</td>
     </ng-container>
     <ng-container matColumnDef="rating">
-      <th mat-header-cell *matHeaderCellDef>rating</th>
-      <td mat-cell *matCellDef="let bus">{{ bus.rating  }}</td>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>rating</h4>
+        <button (click)="sortSelect('rating')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let bus">{{ bus.rating }}</td>
     </ng-container>
     <ng-container matColumnDef="runningStatus">
-      <th mat-header-cell *matHeaderCellDef>runningStatus</th>
+      <th mat-header-cell *matHeaderCellDef>
+        <h4>runningStatus</h4>
+        <button (click)="sortSelect('runningStatus')">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
+      </th>
       <td mat-cell *matCellDef="let bus">{{ bus.runningStatus }}</td>
     </ng-container>
     <ng-container matColumnDef="editBusData">
@@ -128,8 +293,11 @@
         </button>
       </td>
     </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-head">
-  </tr>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="table-head"
+    ></tr>
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"

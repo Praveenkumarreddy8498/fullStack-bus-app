@@ -20,7 +20,7 @@ export class AuthGuard extends KeycloakAuthGuard {
   }
 
   public async isAccessAllowed(
-    route: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,  
     state: RouterStateSnapshot
   ) {
     const user = this._authService.getLoggedUser();

@@ -14,7 +14,7 @@ interface sortData {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class ListViewComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   user!: string;
   documentCount!: number;
   displayedColumns!: string[];
@@ -25,15 +25,15 @@ export class ListViewComponent implements OnInit {
   busList!: Bus[];
   gridView: boolean = false;
   selectButton: boolean = false;
-  choosedSortColumn:string='busId';
-  choosedSortType:string='asc';
+  choosedSortColumn: string = 'busId';
+  choosedSortType: string = 'asc';
   sortTypeChooser: sortData[] = [
     { value: 'asc', viewValue: 'Ascending' },
     { value: 'desc', viewValue: 'Descending' },
   ];
   sortChooser: sortData[] = [
     { value: 'busId', viewValue: 'busId' },
-    // { value: 'busServiceNum', viewValue: 'busServiceNum' },
+    { value: 'busServiceNum', viewValue: 'busServiceNum' },
     // { value: 'busPlateNum', viewValue: 'busPlateNum' },
     // { value: 'busType', viewValue: 'busType' },
     // { value: 'busServiceType', viewValue: 'busServiceType' },
@@ -94,8 +94,8 @@ export class ListViewComponent implements OnInit {
     console.log(this.displayedColumns);
   }
   onSort(sortForm: any) {
-    this.choosedSortColumn=sortForm.sortColumnControl;
-    this.choosedSortType=sortForm.sortTypeControl
+    this.choosedSortColumn = sortForm.sortColumnControl;
+    this.choosedSortType = sortForm.sortTypeControl;
     this._busService
       .getBusDataBySort(
         sortForm.sortColumnControl,
@@ -113,7 +113,12 @@ export class ListViewComponent implements OnInit {
     this.pageNo = event.pageIndex;
     this.pageSize = event.pageSize;
     this._busService
-      .getBusDataBySort(this.choosedSortColumn, this.choosedSortType, event.pageIndex + 1, event.pageSize)
+      .getBusDataBySort(
+        this.choosedSortColumn,
+        this.choosedSortType,
+        event.pageIndex + 1,
+        event.pageSize
+      )
       .subscribe({
         next: (data) => {
           this.busList = data;
@@ -126,6 +131,5 @@ export class ListViewComponent implements OnInit {
   selectAll() {
     this.displayedColumns = this.selectAllColumns;
     // this.columns=this.selectAllColumns;
-   
   }
 }
