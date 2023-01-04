@@ -2,12 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/service/auth.service';
 import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
 import { UtilService } from 'src/app/services/util.service';
 import { Location } from '@angular/common';
-import { MatTableDataSource } from '@angular/material/table'
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface sortData {
   value: string;
@@ -23,13 +23,15 @@ export class TableViewComponent implements OnInit {
   bus!: Bus;
   user!: string;
   pageEvent!: PageEvent;
-  @Input() pageNo!: number ;
+  @Input() pageNo!: number;
   @Input() pageSize!: number;
   @Input() documentCount!: number;
   @Input() displayedColumns!: string[];
   @Input() columns!: string[];
+  @Input() columnsForDisplay: string[] = this.displayedColumns;
+  @Input() filterValue!: string;
+  dataSource = new MatTableDataSource(this.busList);
   sortTypeToggle: boolean = false;
-  // dataSource = new MatTableDataSource(this.busList);
   // dataSource.data=this.busList;
   sortTypeChooser: sortData[] = [
     { value: 'asc', viewValue: 'Ascending' },
@@ -37,7 +39,7 @@ export class TableViewComponent implements OnInit {
   ];
   sortChooser: sortData[] = [
     { value: 'busId', viewValue: 'busId' },
-    // { value: 'busServiceNum', viewValue: 'busServiceNum' },
+    { value: 'busServiceNum', viewValue: 'busServiceNum' },
     // { value: 'busPlateNum', viewValue: 'busPlateNum' },
     // { value: 'busType', viewValue: 'busType' },
     // { value: 'busServiceType', viewValue: 'busServiceType' },
@@ -66,20 +68,19 @@ export class TableViewComponent implements OnInit {
     private _busService: BusService,
     private _router: Router,
     private _utilService: UtilService,
-    private _location: Location
+    private _location: Location,
+    private _snackBar: MatSnackBar
   ) {}
-
-  ngOnInit(): void {
-    // console.log(this.pageNo);
-    // console.log(this.pageSize);
-
-    // console.log(this.busList);
- 
-  // console.log(this.dataSource.data);
-    this.user = this._utilService.getUserRole();
+  ngOnChanges() {
+    console.log(this.busList);
+    this.dataSource.data = this.busList;
+    console.log(this.filterValue);
+    this.dataSource.filter = this.filterValue?.trim().toLocaleLowerCase();
   }
 
-  @Input() columnsForDisplay: string[] = this.displayedColumns;
+  ngOnInit(): void {
+    this.user = this._utilService.getUserRole();
+  }
 
   onAddBus(addBusForm: NgForm) {
     console.log(addBusForm.value);
@@ -91,41 +92,44 @@ export class TableViewComponent implements OnInit {
       console.log(`Deleted`);
       return;
     }
-    this._router.navigate(['/view-table-data',bus.busId]);
+    this._router.navigate(['/view-table-data', bus.busId]);
   }
 
   onDelete(id: number) {
     this._busService.deleteById(id).subscribe({
       next: (data) => console.log(data),
-      error: (error) => console.log(error),
-      complete: () => console.log('Deleted'),
+      error: (error) => {
+        if (error.statusText == 'OK') {
+          this._snackBar.open(`Bus With id ${id} is Deleted`, 'OK');
+          this._router.navigate(['/dashboard']);
+        }
+      },
     });
   }
 
   sortSelect(column: string) {
     this.sortTypeToggle = !this.sortTypeToggle;
     if (this.sortTypeToggle) {
-     
       this._busService
         .getBusDataBySort(column, 'asc', this.pageNo, this.pageSize)
         .subscribe({
           next: (data) => {
-            this.busList = data;
+            this.dataSource.data = data;
           },
         });
     } else if (!this.sortTypeToggle) {
-     
       this._busService
-        .getBusDataBySort(column, 'desc', this.pageNo , this.pageSize)
+        .getBusDataBySort(column, 'desc', this.pageNo, this.pageSize)
         .subscribe({
           next: (data) => {
-            this.busList = data;
+            this.dataSource.data = data;
           },
         });
     }
   }
-//   applyFilter(event: Event) {
-//     const filterValue = (event.target as HTMLInputElement).value;
-//     this.dataSource.filter = filterValue.trim().toLowerCase();
-// }
+  public doFilter = (event: Event) => {
+    this.dataSource.filter = (event.target as HTMLInputElement).value
+      ?.trim()
+      .toLocaleLowerCase();
+  };
 }

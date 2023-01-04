@@ -15,6 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [],
@@ -35,6 +39,10 @@ import { MatListModule } from '@angular/material/list';
     MatAutocompleteModule,
     MatDialogModule,
     MatListModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatTabsModule
+    
   ],
   exports: [
     CommonModule,
@@ -53,6 +61,10 @@ import { MatListModule } from '@angular/material/list';
     MatAutocompleteModule,
     MatDialogModule,
     MatListModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatTabsModule
+    
   ],
 })
 export class MaterialModule {}

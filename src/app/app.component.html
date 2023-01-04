@@ -5,6 +5,7 @@
     aria-label="Example icon-button with menu icon"
   >
     <button
+      matTooltip="Go to Home Page"
       mat-icon-button
       [routerLink]="['/dashboard']"
       routerLinkActive="router-link-active"
@@ -15,11 +16,16 @@
   <span>Bus-application</span>
   <span class="example-spacer"></span>
   <h6>{{ user }}</h6>
-  <button mat-icon-button (click)="onUserProfile()">
+  <button 
+  matTooltip="Go to Profile"
+
+  mat-icon-button (click)="onUserProfile()">
     <mat-icon>account_box</mat-icon>
   </button>
   <button
     mat-icon-button
+    matTooltip="LogOut"
+
     class="logout-icon"
     aria-label="Example icon-button with menu icon"
   >

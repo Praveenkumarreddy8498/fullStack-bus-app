@@ -5,6 +5,29 @@
 >
   <mat-icon>arrow_back </mat-icon>
 </button>
+
+<button
+  mat-stroked-button
+  (click)="onEdit()"
+  matTooltip="Update Bus Data"
+  [ngClass]="'buttonApply2 marginApply'"
+  style="margin-left: 40%;"
+>
+  <mat-icon>edit </mat-icon>
+</button>
+<button
+  mat-stroked-button
+  matTooltip="Delete Bus Data"
+  (click)="onDelete()"
+  [ngClass]="'buttonApply2 marginApply'"
+>
+  <mat-icon>delete </mat-icon>
+</button>
+<!-- <mat-tab-group>
+  <mat-tab label="First"> Content 1 </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group> -->
 <div>
   <mat-card class="example-card" style="width: 400px">
     <mat-card-title>Bus Details</mat-card-title>
@@ -45,7 +68,7 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="example-card" style="width: 400px">
+  <mat-card class="example-card" style="width: 400px; height: 380px">
     <mat-card-title>Ticket Details</mat-card-title>
     <img
       src="https://img.icons8.com/material-outlined/512/bus-ticket.png"
@@ -60,12 +83,12 @@
         {{
           bus.flexiTicket === true
             ? "Ticket is Flexible "
-            : ("Ticket is Not Flexible" )
+            : "Ticket is Not Flexible"
         }}
       </h3>
     </mat-card-content>
   </mat-card>
-  <mat-card class="example-card" style="width: 400px">
+  <mat-card class="example-card" style="width: 400px; height: 380px">
     <mat-card-title style="text-align: center; color: rgb(52, 33, 63)"
       >Other Info</mat-card-title
     >
@@ -80,14 +103,12 @@
         {{
           bus.movieEnabled === false
             ? "Movie access unavailable"
-            : ("Movie access available" )
+            : "Movie access available"
         }}
       </h3>
       <h3>
         {{
-          bus.runningStatus === true
-            ? "Bus is Running"
-            : ("Bus in not Running" )
+          bus.runningStatus === true ? "Bus is Running" : "Bus in not Running"
         }}
       </h3>
     </mat-card-content>

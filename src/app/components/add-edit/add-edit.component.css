@@ -5,32 +5,32 @@
   color: white;
 }
 table {
-  background-color: #f9e2e2;
+  background-color: #e3c6c6;
   width: 80%;
   text-align: center;
   margin: 10px 0px 10px 0px;
   border-radius: 30px;
 
-  border: 2.5px solid rgb(39, 3, 3);
+  border: 3px solid rgb(39, 3, 3);
 }
 
 .table-div {
   padding-left: 140px;
 }
-td{
-    font-size: medium;
-    font:bold;
+td {
+  font-size: medium;
+  font: bold;
 }
-.buttonApply{
-    background-color: #1f1c1c;
-    color: rgb(255, 255, 255);
-  }
-  .marginApply{
-    margin: 10px 10px 5px 10px;
-  }
-  .radio-class{
-    padding: 20px 0px 20px 0px;
-  }
-  .radio-button{
-    padding-left: 10px;
-  }
+.buttonApply {
+  background-color: #1f1c1c;
+  color: rgb(255, 255, 255);
+}
+.marginApply {
+  margin: 10px 10px 5px 10px;
+}
+.radio-class {
+  padding: 20px 0px 20px 0px;
+}
+.radio-button {
+  padding-left: 10px;
+}

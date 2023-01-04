@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
   selectButton: boolean = false;
   choosedSortColumn: string = 'busId';
   choosedSortType: string = 'asc';
+  columnChooseButton: boolean = false;
+  filterValue!:string;
   sortTypeChooser: sortData[] = [
     { value: 'asc', viewValue: 'Ascending' },
     { value: 'desc', viewValue: 'Descending' },
@@ -94,6 +96,8 @@ export class DashboardComponent implements OnInit {
     console.log(this.displayedColumns);
   }
   onSort(sortForm: any) {
+    console.log(this.pageNo);
+    console.log(this.pageSize);
     this.choosedSortColumn = sortForm.sortColumnControl;
     this.choosedSortType = sortForm.sortTypeControl;
     this._busService
@@ -110,7 +114,7 @@ export class DashboardComponent implements OnInit {
       });
   }
   onChangePage(event: PageEvent) {
-    this.pageNo = event.pageIndex;
+    this.pageNo = event.pageIndex + 1;
     this.pageSize = event.pageSize;
     this._busService
       .getBusDataBySort(
@@ -130,6 +134,12 @@ export class DashboardComponent implements OnInit {
   }
   selectAll() {
     this.displayedColumns = this.selectAllColumns;
-    // this.columns=this.selectAllColumns;
   }
+  toggleColumnChooser() {
+    this.columnChooseButton = !this.columnChooseButton;
+  }
+  doFilter(event:Event){
+    this.filterValue=(event.target as HTMLInputElement).value
+  }
+  
 }

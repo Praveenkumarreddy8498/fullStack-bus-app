@@ -1,12 +1,13 @@
-
-<div class="table-class" fxFlex="100" fxFlex.sm="100" fxFlex.xs="100">
-  <!-- fxFlex.md="60" fxFlex.lg="70" fxFlex.gt-lg="80" fxFlex.xs="40" -->
- 
-  <table mat-table [dataSource]="busList" class="table-mat" >
+<div class="table-class">
+  <table mat-table [dataSource]="dataSource" class="table-mat">
     <ng-container matColumnDef="busId">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busId</h4>
-        <button (click)="sortSelect('busId')">
+        <h4>BusId</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('busId')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -20,8 +21,12 @@
 
     <ng-container matColumnDef="busServiceNum">
       <th mat-header-cell *matHeaderCellDef class="header-data">
-        <h4>serviceNo</h4>
-        <button (click)="sortSelect('busServiceNum')">
+        <h4>ServiceNo</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('busServiceNum')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -37,8 +42,16 @@
 
     <ng-container matColumnDef="busPlateNum">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busPlateNum</h4>
-        
+        <!-- style="padding: 0px 20px 38px 20px"> -->
+        <h4>PlateNo</h4>
+        <button mat-mini-fab disabled="true">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
       </th>
       <td mat-cell *matCellDef="let bus">
         {{ bus.busPlateNum }}
@@ -46,23 +59,41 @@
     </ng-container>
     <ng-container matColumnDef="busType">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busType</h4>
-       
+        <h4>BusType</h4>
+        <button mat-mini-fab disabled="true">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busType }}</td>
     </ng-container>
 
     <ng-container matColumnDef="busServiceType">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busServiceType</h4>
-        
+        <h4>BusServiceType</h4>
+        <button mat-mini-fab disabled="true">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busServiceType }}</td>
     </ng-container>
     <ng-container matColumnDef="busCapacity">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busCapacity</h4>
-        <button (click)="sortSelect('busCapacity')">
+        <h4>Capacity</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('busCapacity')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -75,20 +106,40 @@
     </ng-container>
     <ng-container matColumnDef="startingPoint">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>startingPoint</h4>
+        <h4>StartingPoint</h4>
+        <button mat-mini-fab matTooltip="Sort by Order ASC/DSC" disabled="true">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.startingPoint }}</td>
     </ng-container>
     <ng-container matColumnDef="destination">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>destination</h4>
+        <h4>Destination</h4>
+        <button mat-mini-fab matTooltip="Sort by Order ASC/DSC" disabled="true">
+          <img
+            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
+            alt="sort"
+            width="20px"
+            height="20px"
+          />
+        </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.destination }}</td>
     </ng-container>
     <ng-container matColumnDef="busStops">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busStops</h4>
-        <button (click)="sortSelect('busStops')">
+        <h4>BusStops</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('busStops')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -101,8 +152,12 @@
     </ng-container>
     <ng-container matColumnDef="busDuration">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>busDuration</h4>
-        <button (click)="sortSelect('busDuration')">
+        <h4>Duration</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('busDuration')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -115,8 +170,12 @@
     </ng-container>
     <ng-container matColumnDef="scheduleDepartureDateTime">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>scheduleDepartureDateTime</h4>
-        <button (click)="sortSelect('dep_date')">
+        <h4>DepartureTime</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('dep_date')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -131,8 +190,12 @@
     </ng-container>
     <ng-container matColumnDef="scheduleArrivalDateTime">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>scheduleArrivalDateTime</h4>
-        <button (click)="sortSelect('arr_date')">
+        <h4>ArrivalTime</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('arr_date')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -147,8 +210,12 @@
     </ng-container>
     <ng-container matColumnDef="estimatedArrivalDateTime">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>estimatedArrivalDateTime</h4>
-        <button (click)="sortSelect('est_date')">
+        <h4>EstimatedArrival</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('est_date')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -163,8 +230,12 @@
     </ng-container>
     <ng-container matColumnDef="fareAmount">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>fareAmount</h4>
-        <button (click)="sortSelect('fareAmount')">
+        <h4>FareAmount</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('fareAmount')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -179,8 +250,12 @@
     </ng-container>
     <ng-container matColumnDef="fareTax">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>fareTax</h4>
-        <button (click)="sortSelect('fareTax')">
+        <h4>FareTax</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('fareTax')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -195,8 +270,12 @@
     </ng-container>
     <ng-container matColumnDef="totalFare">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>totalFare</h4>
-        <button (click)="sortSelect('totalFare')">
+        <h4>TotalFare</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('totalFare')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -211,8 +290,12 @@
     </ng-container>
     <ng-container matColumnDef="flexiTicket">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>flexiTicket</h4>
-        <button (click)="sortSelect('flexiTicket')">
+        <h4>FlexiTicket</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('flexiTicket')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -225,8 +308,12 @@
     </ng-container>
     <ng-container matColumnDef="movieEnabled">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>movieEnabled</h4>
-        <button (click)="sortSelect('movieEnabled')">
+        <h4>MovieEnabled</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('movieEnabled')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -239,8 +326,12 @@
     </ng-container>
     <ng-container matColumnDef="rating">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>rating</h4>
-        <button (click)="sortSelect('rating')">
+        <h4>Rating</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('rating')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -253,8 +344,12 @@
     </ng-container>
     <ng-container matColumnDef="runningStatus">
       <th mat-header-cell *matHeaderCellDef>
-        <h4>runningStatus</h4>
-        <button (click)="sortSelect('runningStatus')">
+        <h4>RunningStatus</h4>
+        <button
+          mat-mini-fab
+          matTooltip="Sort by Ascending/Descending"
+          (click)="sortSelect('runningStatus')"
+        >
           <img
             src="https://img.icons8.com/metro/2x/sorting-arrows.png"
             alt="sort"
@@ -266,24 +361,30 @@
       <td mat-cell *matCellDef="let bus">{{ bus.runningStatus }}</td>
     </ng-container>
     <ng-container matColumnDef="editBusData">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ user === "manager" || user === "editor" ? "Edit" : "" }}
+      <th mat-header-cell *matHeaderCellDef style="padding: 0px 20px 38px 20px">
+        <h4>Edit</h4>
       </th>
       <td mat-cell *matCellDef="let bus">
-        <a
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Edit Bus Data"
           [routerLink]="['/editForm', bus.busId]"
           routerLinkActive="router-link-active"
           *ngIf="user === 'manager' || user === 'editor'"
         >
           <mat-icon>edit</mat-icon>
-        </a>
+        </button>
       </td>
     </ng-container>
     <ng-container matColumnDef="deleteBusData">
-      <th mat-header-cell *matHeaderCellDef>Delete</th>
+      <th mat-header-cell *matHeaderCellDef style="padding: 0px 20px 38px 20px">
+        <h4>Delete</h4>
+      </th>
       <td mat-cell *matCellDef="let bus">
         <button
           mat-icon-button
+          matTooltip="Delete Bus Data"
           type="button"
           color="primary"
           *ngIf="user === 'manager' || user === 'editor'"

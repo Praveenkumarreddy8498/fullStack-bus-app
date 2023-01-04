@@ -1,4 +1,4 @@
-.table-class{
+.table-class {
   display: flex;
 }
 .example-spacer {
@@ -13,12 +13,13 @@ table {
   cursor: pointer;
 }
 .table-class {
-  overflow:scroll;
+  overflow: scroll;
+  height: 500px;
 }
-.table-mat{
+.table-mat {
   background-color: rgb(234, 233, 233);
 }
-.table-head{
+.table-head {
   background-color: #b7c3df;
 }
 a {
@@ -27,8 +28,6 @@ a {
 .mat-cell,
 .mat-header-cell {
   padding: 20px 20px 20px 20px;
-  
-
 }
 .mat-row:hover {
   background-color: rgb(214, 200, 184);
@@ -58,8 +57,17 @@ mat-toolbar {
 .content > mat-card {
   margin-bottom: 16px;
 }
-.buttonApply{
+.buttonApply {
   background-color: #e6545b;
   color: black;
 }
 
+.mat-mini-fab {
+  background-color: rgb(216, 227, 229);
+}
+.no-sort-header {
+  padding: 0px, 20px, 35px, 20px;
+}
+.mat-icon-button {
+  color: rgb(67, 49, 26);
+}

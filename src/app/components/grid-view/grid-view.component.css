@@ -1,8 +1,14 @@
-.tile{
-    border: 5px solid #cccccc;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 5px 5px 5px 5px #4a4b4a;
+.tile {
+  border: 5px solid #8e8484;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px 5px #4a4b4a;
+  background-color: aliceblue;
+
+}
+.grid-list{
+  height: 50px;
+
 }
 .tile:hover {
   background-color: rgb(213, 244, 219);
@@ -13,4 +19,9 @@
 
 h6 {
   font-size: medium;
+}
+.example-card {
+  width: 97%;
+
+  /* background-color: rgb(241, 235, 237); */
 }

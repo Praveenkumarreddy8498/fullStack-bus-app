@@ -3,9 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
-import { Location } from '@angular/common';
+import { JsonPipe, Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 interface BusData {
   value: string;
 }
@@ -32,7 +34,9 @@ export class AddEditComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _busService: BusService,
     private _utilService: UtilService,
-    private _location: Location
+    private _location: Location,
+    private _router: Router,
+    private _snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((map) => {
@@ -85,18 +89,26 @@ export class AddEditComponent implements OnInit {
   });
   onAddBus(addBus: any) {
     if (this.editForm) {
-      console.log(` Updating`);
-      console.log(addBus.value);
+    
       this._busService.updateBus(addBus.value).subscribe({
         next: (data) => {
-          console.log(data);
+        },
+        error: (error) => {
+          if (error.statusText == 'OK') {
+            this._snackBar.open(`Bus with Id ${addBus.value.busId} is Updated `, 'OK');
+            this._router.navigate(['/dashboard']);
+          }
         },
       });
     } else {
-      console.log(`For Adding`);
       this._busService.addBus(addBus.value).subscribe({
         next: (data) => console.log(data),
-        error: (error) => console.log(error),
+        error: (error) =>{
+          if (error.statusText == 'OK') {
+            this._snackBar.open(`Bus with Id ${addBus.value.busId} is Added `, 'OK');
+            this._router.navigate(['/dashboard']);
+          }
+        } ,
         complete: () => console.log('Bus Added'),
       });
     }

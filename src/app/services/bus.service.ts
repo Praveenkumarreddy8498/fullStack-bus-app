@@ -8,8 +8,8 @@ import { Bus } from '../models/bus';
 })
 export class BusService implements OnInit {
  
-  private _BaseUrl = `http://localhost:9000/bus-api-cud/bus`;
-  private _BaseUrlRetrive = `http://localhost:9000/bus-api-retrive/bus`;
+  private _BaseUrl = `http://localhost:9000/bus-api-cud`;
+  private _BaseUrlRetrive = `http://localhost:9000/bus-api-retrive`;
 
   constructor(private _httpclient:HttpClient) {
 
@@ -23,7 +23,7 @@ getCount=():Observable<number>=>{
     return this._httpclient.get<number>(this._BaseUrlRetrive.concat("/count"))
 }
 getBusDataBySort=(column:string,sort:string,pageNum:number,numItemsPerPage:number):Observable<Bus[]>=>{
-   return this._httpclient.get<Bus[]>(this._BaseUrlRetrive+`/sort/${column}/${sort}/${pageNum}/${numItemsPerPage}`)
+   return this._httpclient.get<Bus[]>(this._BaseUrlRetrive+`/${column}/${sort}/${pageNum}/${numItemsPerPage}`)
  }
 addBus=(bus:Bus)=>{
   return this._httpclient.post<void>(this._BaseUrl,bus)
