@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Bus } from '../models/bus';
@@ -7,7 +7,7 @@ import { Bus } from '../models/bus';
   providedIn: 'root'
 })
 export class BusService implements OnInit {
- 
+
   private _BaseUrl = `http://localhost:9000/bus-api-cud`;
   private _BaseUrlRetrive = `http://localhost:9000/bus-api-retrive`;
 
@@ -26,14 +26,31 @@ getBusDataBySort=(column:string,sort:string,pageNum:number,numItemsPerPage:numbe
    return this._httpclient.get<Bus[]>(this._BaseUrlRetrive+`/${column}/${sort}/${pageNum}/${numItemsPerPage}`)
  }
 addBus=(bus:Bus)=>{
-  return this._httpclient.post<void>(this._BaseUrl,bus)
+  const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+  const requestOptions: Object = {
+    headers: headers,
+    responseType: 'text'
+  }
+  return this._httpclient.post<string>(this._BaseUrl,bus,requestOptions)
 }
+
 deleteById=(id:number)=>{
-  return this._httpclient.delete<void>(this._BaseUrl+`/${id}`)
+  const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+  const requestOptions: Object = {
+    headers: headers,
+    responseType: 'text'
+  }
+  return this._httpclient.delete<string>(this._BaseUrl+`/${id}`,requestOptions)
   
 }
 updateBus=(bus:Bus)=>{
-  return this._httpclient.put<void>(this._BaseUrl,bus)
+  const headers = new HttpHeaders({      'Content-type': 'application/json',
+})
+  const requestOptions: Object = {
+    headers: headers,
+    responseType: 'text'
+  }
+  return this._httpclient.put<string>(this._BaseUrl,bus,requestOptions)
 }
 
 getBusById=(id:number):Observable<Bus>=>{

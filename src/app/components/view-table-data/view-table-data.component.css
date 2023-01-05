@@ -1,5 +1,6 @@
 div {
   text-align: center;
+  margin-left: 40%;
 }
 .view-table {
   margin-left: 140px;
@@ -27,11 +28,24 @@ div {
   margin-bottom: 50px;
   float: left;
   margin: 10px 10px 10px 10px;
-  box-shadow: 5px 5px 5px 5px #706b68;
-  background-color: rgb(227, 242, 242);
+  box-shadow: 5px 5px 5px 5px #706b68;  
+  background-color: rgb(240, 217, 191);
 }
 .example-card:hover {
-  background-color: rgb(210, 217, 191);
+  background-color: rgb(213, 244, 219);
+  box-shadow: 5px 5px 5px 5px #706b68;  
+
+  border: 1px solid black;
+  transform: scale(1.02);
+  /* background-color: rgb(210, 217, 191); */
 }
 
+/* .tile:hover {
+  background-color: rgb(213, 244, 219);
+  border: 1px solid black;
+  transform: scale(1.05);
+} */
+.example-card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
 

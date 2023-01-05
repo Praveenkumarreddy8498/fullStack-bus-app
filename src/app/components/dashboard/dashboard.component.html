@@ -1,10 +1,11 @@
-<div style="background-color: rgb(255, 255, 255)">
+<div class="dasboard-div" style="background-color: #f5f7ec;">
+  <!-- ;margin-top: 50px;width: 100%; -->
   <button
     mat-raised-button
     matTooltip="To Choose Columns For Table"
     [ngClass]="'buttonApply marginApply'"
     (click)="toggleColumnChooser()"
-    style="margin-right: 20px; width: 140px"
+    style="margin-right: 20px; width: 155px"
   >
     {{ columnChooseButton === false ? "Choose Columns" : "Hide    Chooser  " }}
   </button>
@@ -29,7 +30,10 @@
   >
     {{ gridView === true ? "Table" : "Grid" }} View
   </button>
-  <mat-form-field style="margin: 0em 1em 0em 1em; padding-left: 100px">
+  <mat-form-field
+    style="margin: 0em 1em 0em 1em; padding-left: 100px"
+    *ngIf="!gridView"
+  >
     <input
       matInput
       matTooltip="Search For Values In Table"
@@ -116,29 +120,32 @@
   </form>
 </div>
 
-<div [hidden]="gridView">
-  <app-table-view
-    *ngIf="!gridView"
-    [documentCount]="documentCount"
-    [displayedColumns]="displayedColumns"
-    [columns]="columns"
-    [busList]="busList"
-    [pageNo]="pageNo"
-    [pageSize]="pageSize"
-    [filterValue]="filterValue"
-  ></app-table-view>
-</div>
-<div [hidden]="!gridView">
-  <app-grid-view [busList]="busList"> </app-grid-view>
-</div>
+<div style="display: flex; flex-direction: column">
+  <div [hidden]="gridView" >
+    <app-table-view
+      class="table-view"
+      *ngIf="!gridView"
+      [documentCount]="documentCount"
+      [displayedColumns]="displayedColumns"
+      [columns]="columns"
+      [busList]="busList"
+      [pageNo]="pageNo"
+      [pageSize]="pageSize"
+      [filterValue]="filterValue"
+    ></app-table-view>
+  </div>
+  <div [hidden]="!gridView">
+    <app-grid-view [busList]="busList"> </app-grid-view>
+  </div>
 
-<div class="footer">
-  <mat-paginator
-    [length]="documentCount"
-    [pageSize]="10"
-    [pageSizeOptions]="[1, 2, 3, 5, 10,20]"
-    (page)="onChangePage($event)"
-    aria-label="Select page"
-  >
-  </mat-paginator>
+  <div class="footer">
+    <mat-paginator
+      [length]="documentCount"
+      [pageSize]="10"
+      [pageSizeOptions]="[1, 2, 3, 5, 10, 20]"
+      (page)="onChangePage($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
 </div>

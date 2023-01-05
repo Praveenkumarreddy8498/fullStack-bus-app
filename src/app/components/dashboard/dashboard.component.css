@@ -1,23 +1,56 @@
-.buttonApply{
-    background-color:rgb(100, 100, 142);
-    color: white;
-  }
-.marginApply{
-    margin: 1em 1em 1em 1em;
+.dasboard-div {
+  background-color: #f5f7ec;
+  /* position: fixed; */
+  /* margin-top: 67px; */
+  /* border: solid black 1px;
+  width: 100%; */
+}
+.buttonApply {
+  background-color: rgb(100, 100, 142);
+  color: white;
+  position: relative;
+  display: inline-block;
+  /* margin: 15px;
+    padding: 15px 30px; */
+  text-align: center;
+  font-size: 16px;
+  /* letter-spacing: 1px; */
+  text-decoration: none;
+  color: #000000;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #725ac1;
+}
+.buttonApply:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725ac1;
+}
+.marginApply {
+  margin: 1em 1em 1em 1em;
 }
 .example-spacer {
   flex: 1 1 auto;
   text-align: center;
+}
+.table-view {
+  height: 100px;
 }
 .footer {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: rgb(235, 234, 234);
-  color: white;
+  background-color: #eff5ea;
+  /* color: rgb(246, 25, 25); */
   text-align: center;
 }
 .mat-paginator {
   background-color: transparent;
+  /* color: rgb(27, 5, 5); */
 }
+
+
+

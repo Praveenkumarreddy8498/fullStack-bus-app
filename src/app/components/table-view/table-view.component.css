@@ -14,60 +14,48 @@ table {
 }
 .table-class {
   overflow: scroll;
-  height: 500px;
+  margin-bottom: 55px;
 }
 .table-mat {
-  background-color: rgb(234, 233, 233);
+  background-color: #eae7e7;
+  overflow: auto;
+  /* margin-top: 70px; */
 }
 .table-head {
-  background-color: #b7c3df;
+  background-color: #b1c0db;
 }
+
 a {
   text-decoration: none;
 }
 .mat-cell,
 .mat-header-cell {
-  padding: 20px 20px 20px 20px;
+  padding: 8px 8px 8px 8px;
 }
 .mat-row:hover {
   background-color: rgb(214, 200, 184);
 }
-
-.example-radio-group {
-  display: flex;
-  flex-direction: column;
-  margin: 15px 0px;
-  align-items: flex-start;
-}
-
 .example-radio-button {
   margin: 5px;
 }
 mat-grid-tile {
   background: lightblue;
 }
-mat-toolbar {
-  justify-content: space-between;
-}
 
-.content {
-  padding: 16px;
-}
-
-.content > mat-card {
-  margin-bottom: 16px;
-}
 .buttonApply {
   background-color: #e6545b;
   color: black;
 }
 
 .mat-mini-fab {
-  background-color: rgb(216, 227, 229);
+  background-color: #b1c0db;
 }
 .no-sort-header {
   padding: 0px, 20px, 35px, 20px;
 }
 .mat-icon-button {
   color: rgb(67, 49, 26);
+}
+.mat-icon {
+  color: black;
 }

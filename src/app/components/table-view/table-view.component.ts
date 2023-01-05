@@ -72,9 +72,7 @@ export class TableViewComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
   ngOnChanges() {
-    console.log(this.busList);
     this.dataSource.data = this.busList;
-    console.log(this.filterValue);
     this.dataSource.filter = this.filterValue?.trim().toLocaleLowerCase();
   }
 
@@ -90,6 +88,7 @@ export class TableViewComponent implements OnInit {
   showDetails(event: Event, bus: Bus) {
     if ((event.target as HTMLElement).nodeName === 'MAT-ICON') {
       console.log(`Deleted`);
+
       return;
     }
     this._router.navigate(['/view-table-data', bus.busId]);
@@ -97,11 +96,16 @@ export class TableViewComponent implements OnInit {
 
   onDelete(id: number) {
     this._busService.deleteById(id).subscribe({
-      next: (data) => console.log(data),
+      next: (data) => {
+        console.log(`In This`);
+        console.log(data);
+      },
       error: (error) => {
+        console.log(error);
         if (error.statusText == 'OK') {
+          console.log(`In this`);
           this._snackBar.open(`Bus With id ${id} is Deleted`, 'OK');
-          this._router.navigate(['/dashboard']);
+          // window.location.reload();
         }
       },
     });

@@ -1,35 +1,38 @@
-<mat-toolbar >
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
+<div class="nav-bar">
+  <mat-toolbar>
     <button
-      matTooltip="Go to Home Page"
       mat-icon-button
-      [routerLink]="['/dashboard']"
-      routerLinkActive="router-link-active"
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
     >
-      <mat-icon>home</mat-icon>
+      <button
+        matTooltip="Go to Home Page"
+        mat-icon-button
+        [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active"
+      >
+        <mat-icon class="colorRev">home</mat-icon>
+      </button>
     </button>
-  </button>
-  <span>Bus-application</span>
-  <span class="example-spacer"></span>
-  <h6>{{ user }}</h6>
-  <button 
-  matTooltip="Go to Profile"
-
-  mat-icon-button (click)="onUserProfile()">
-    <mat-icon>account_box</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    matTooltip="LogOut"
-
-    class="logout-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon aria-hidden="false" (click)="onLogout()">logout</mat-icon>
-  </button>
-</mat-toolbar>
+    <span class="colorRev">Bus-application</span>
+    <span class="example-spacer"></span>
+    <h6 class="colorRev">{{ user }}</h6>
+    <button
+      matTooltip="Go to Profile"
+      class="colorRev"
+      mat-icon-button
+      (click)="onUserProfile()"
+    >
+      <mat-icon>account_box</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      matTooltip="LogOut"
+      class="colorRev"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon aria-hidden="false" (click)="onLogout()">logout</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
 <router-outlet></router-outlet>

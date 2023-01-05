@@ -34,3 +34,7 @@ td {
 .radio-button {
   padding-left: 10px;
 }
+.errorClass{
+  font-variant: small-caps;
+  color: red;
+}

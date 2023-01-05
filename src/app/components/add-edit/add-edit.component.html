@@ -10,6 +10,7 @@
     [formGroup]="addBusForm"
     class="example-form"
     (ngSubmit)="onAddBus(addBusForm)"
+    novalidate
   >
     <table>
       <tr>
@@ -23,6 +24,12 @@
               formControlName="busId"
             />
           </mat-form-field>
+
+          <mat-error *ngIf="addBusForm.controls['busId']?.invalid && addBusForm.controls['busId']?.touched ">
+                  Bus Id is Required
+          </mat-error>
+        
+         
         </td>
       </tr>
 
@@ -37,6 +44,9 @@
               formControlName="busServiceNum"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busServiceNum']?.invalid && addBusForm.controls['busServiceNum']?.touched ">
+            busServiceNum is Required
+          </mat-error>
         </td>
       </tr>
 
@@ -51,6 +61,9 @@
               formControlName="busPlateNum"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busPlateNum']?.invalid && addBusForm.controls['busPlateNum']?.touched ">
+            busPlateNum is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -71,6 +84,9 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busType']?.invalid && addBusForm.controls['busType']?.touched ">
+            busType is Required
+          </mat-error>
         </td>
       </tr>
 
@@ -92,6 +108,9 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busServiceType']?.invalid && addBusForm.controls['busServiceType']?.touched ">
+            busServiceType is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -105,6 +124,9 @@
               formControlName="busCapacity"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busCapacity']?.invalid && addBusForm.controls['busCapacity']?.touched ">
+            busCapacity is Required
+          </mat-error>
         </td>
       </tr>
 
@@ -119,6 +141,9 @@
               formControlName="startingPoint"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['startingPoint']?.invalid && addBusForm.controls['startingPoint']?.touched ">
+            startingPoint is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -132,6 +157,9 @@
               formControlName="destination"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['destination']?.invalid && addBusForm.controls['destination']?.touched ">
+            destination is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -145,6 +173,9 @@
               formControlName="busStops"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busStops']?.invalid && addBusForm.controls['busStops']?.touched ">
+            busStops is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -158,6 +189,9 @@
               formControlName="busDuration"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['busDuration']?.invalid && addBusForm.controls['busDuration']?.touched ">
+            busDuration is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -171,6 +205,14 @@
               formControlName="scheduleDepartureDateTime"
             />
           </mat-form-field>
+          <!-- <mat-error *ngIf="addBusForm.controls['scheduleDepartureDateTime']?.invalid || addBusForm.controls['scheduleDepartureDateTime']?.errors?.['pattern']">
+            scheduleDepartureDateTime pattern is wrong
+
+          </mat-error> -->
+          <mat-error *ngIf="addBusForm.controls['scheduleDepartureDateTime']?.invalid && addBusForm.controls['scheduleDepartureDateTime']?.touched ">
+            scheduleDepartureDateTime is Required
+          </mat-error>
+         
         </td>
       </tr>
       <tr>
@@ -184,6 +226,9 @@
               formControlName="scheduleArrivalDateTime"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['scheduleArrivalDateTime']?.invalid && addBusForm.controls['scheduleArrivalDateTime']?.touched ">
+            scheduleArrivalDateTime is Required
+          </mat-error>
         </td>
       </tr>
       <tr>
@@ -197,6 +242,9 @@
               formControlName="estimatedArrivalDateTime"
             />
           </mat-form-field>
+          <mat-error *ngIf="addBusForm.controls['estimatedArrivalDateTime']?.invalid && addBusForm.controls['estimatedArrivalDateTime']?.touched ">
+            estimatedArrivalDateTime is Required
+          </mat-error>
         </td>
       </tr>
 

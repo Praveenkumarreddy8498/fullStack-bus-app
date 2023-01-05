@@ -5,7 +5,7 @@ import { Bus } from 'src/app/models/bus';
 import { BusService } from 'src/app/services/bus.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilService } from 'src/app/services/util.service';
-import { JsonPipe, Location } from '@angular/common';
+import {  Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface BusData {
@@ -76,9 +76,9 @@ export class AddEditComponent implements OnInit {
     destination: new FormControl('', Validators.required),
     busStops: new FormControl<number | null>(null, Validators.required),
     busDuration: new FormControl('', Validators.required),
-    scheduleDepartureDateTime: new FormControl('', Validators.required),
-    scheduleArrivalDateTime: new FormControl('', Validators.required),
-    estimatedArrivalDateTime: new FormControl('', Validators.required),
+    scheduleDepartureDateTime: new FormControl('', [Validators.required,Validators.pattern(/^(\d{4,})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}(?:\.\d+)?))?$/)]),
+    scheduleArrivalDateTime: new FormControl('',[Validators.required,Validators.pattern(/^(\d{4,})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}(?:\.\d+)?))?$/)]),
+    estimatedArrivalDateTime: new FormControl('', [Validators.required,Validators.pattern(/^(\d{4,})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::(\d{2}(?:\.\d+)?))?$/)]),
     fareAmount: new FormControl<number | null>(null, Validators.required),
     fareTax: new FormControl<number | null>(null, Validators.required),
     totalFare: new FormControl<number | null>(null, Validators.required),
@@ -92,6 +92,7 @@ export class AddEditComponent implements OnInit {
     
       this._busService.updateBus(addBus.value).subscribe({
         next: (data) => {
+          console.log(data);
         },
         error: (error) => {
           if (error.statusText == 'OK') {

@@ -2,8 +2,3 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.mat-toolbar{
-    /* background-color: burlywood; */
-    background-color:   #dccc88;
-    /* #AA96DA, Mint #C5FAD5, Butter #FFFFD2 */
-}

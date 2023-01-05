@@ -12,6 +12,11 @@
 }
 .tile:hover {
   background-color: rgb(213, 244, 219);
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+.tile:active {
+  transform: scale(0.95) rotateZ(1.7deg);
 }
 .mat-card {
   cursor: pointer;
@@ -25,3 +30,4 @@ h6 {
 
   /* background-color: rgb(241, 235, 237); */
 }
+

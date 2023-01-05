@@ -1,8 +1,29 @@
 .example-spacer {
-    flex: 1 1 auto;
-    text-align: center;
-  }
-.mat-toolbar{
-  display: flex;
+  flex: 1 1 auto;
+  text-align: center;
+
 }
+.nav-bar{
+  width: 100%;
   
+}
+.mat-toolbar {
+  display: flex;
+  /* position: fixed; */
+
+  /* background-color: burlywood; */
+  /* #dccc88 */
+  /* c7dc88 */
+  background-color: #45c1b9;
+  /* #AA96DA, Mint #C5FAD5, Butter #FFFFD2 */
+  /* #DC3D24
+#232B2B
+#FFFFFF
+#E3AE57 */
+}
+.button{
+  color: white;
+}
+.colorRev{
+  color: white;
+}

@@ -1,5 +1,6 @@
-<div class="table-class">
-  <table mat-table [dataSource]="dataSource" class="table-mat">
+
+<div class="table-class" >
+  <table mat-table [dataSource]="dataSource" class="table-mat" >
     <ng-container matColumnDef="busId">
       <th mat-header-cell *matHeaderCellDef>
         <h4>BusId</h4>
@@ -8,12 +9,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('busId')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busId }}</td>
@@ -27,12 +23,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('busServiceNum')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -42,15 +33,9 @@
 
     <ng-container matColumnDef="busPlateNum">
       <th mat-header-cell *matHeaderCellDef>
-        <!-- style="padding: 0px 20px 38px 20px"> -->
         <h4>PlateNo</h4>
         <button mat-mini-fab disabled="true">
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -61,12 +46,7 @@
       <th mat-header-cell *matHeaderCellDef>
         <h4>BusType</h4>
         <button mat-mini-fab disabled="true">
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busType }}</td>
@@ -76,12 +56,7 @@
       <th mat-header-cell *matHeaderCellDef>
         <h4>BusServiceType</h4>
         <button mat-mini-fab disabled="true">
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busServiceType }}</td>
@@ -94,12 +69,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('busCapacity')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busCapacity }}</td>
@@ -108,12 +78,7 @@
       <th mat-header-cell *matHeaderCellDef>
         <h4>StartingPoint</h4>
         <button mat-mini-fab matTooltip="Sort by Order ASC/DSC" disabled="true">
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.startingPoint }}</td>
@@ -122,12 +87,7 @@
       <th mat-header-cell *matHeaderCellDef>
         <h4>Destination</h4>
         <button mat-mini-fab matTooltip="Sort by Order ASC/DSC" disabled="true">
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.destination }}</td>
@@ -140,12 +100,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('busStops')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busStops }}</td>
@@ -158,12 +113,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('busDuration')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.busDuration }}</td>
@@ -176,12 +126,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('dep_date')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -196,12 +141,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('arr_date')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -216,12 +156,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('est_date')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -236,12 +171,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('fareAmount')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -256,12 +186,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('fareTax')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -276,12 +201,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('totalFare')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">
@@ -296,12 +216,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('flexiTicket')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.flexiTicket }}</td>
@@ -314,12 +229,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('movieEnabled')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.movieEnabled }}</td>
@@ -332,12 +242,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('rating')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.rating }}</td>
@@ -350,12 +255,7 @@
           matTooltip="Sort by Ascending/Descending"
           (click)="sortSelect('runningStatus')"
         >
-          <img
-            src="https://img.icons8.com/metro/2x/sorting-arrows.png"
-            alt="sort"
-            width="20px"
-            height="20px"
-          />
+         <mat-icon>swap_vert</mat-icon>
         </button>
       </th>
       <td mat-cell *matCellDef="let bus">{{ bus.runningStatus }}</td>

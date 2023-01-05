@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   choosedSortColumn: string = 'busId';
   choosedSortType: string = 'asc';
   columnChooseButton: boolean = false;
-  filterValue!:string;
+  filterValue!: string;
   sortTypeChooser: sortData[] = [
     { value: 'asc', viewValue: 'Ascending' },
     { value: 'desc', viewValue: 'Descending' },
@@ -138,8 +138,7 @@ export class DashboardComponent implements OnInit {
   toggleColumnChooser() {
     this.columnChooseButton = !this.columnChooseButton;
   }
-  doFilter(event:Event){
-    this.filterValue=(event.target as HTMLInputElement).value
+  doFilter(event: Event) {
+    this.filterValue = (event.target as HTMLInputElement).value;
   }
-  
 }
